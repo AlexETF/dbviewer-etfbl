@@ -14,12 +14,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import net.etfbl.dbviewer.bridge.DisplayMetaModelData;
+import net.etfbl.dbviewer.model.MetaModelSchema;
 
 /**
  *
  * @author ZM
  */
-public class DBViewerController implements Initializable {
+public class DBViewerController implements Initializable, DisplayMetaModelData {
     
     @FXML
     private TabPane tabPaneChildElements;
@@ -50,5 +52,10 @@ public class DBViewerController implements Initializable {
         }
         root.setExpanded(true);
         treeSchemeElements.setRoot(root);
+    }
+
+    @Override
+    public void displayElements(MetaModelSchema schema) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
