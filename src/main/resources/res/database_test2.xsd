@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema 
+   elementFormDefault="qualified"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="Database">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="DRZAVA">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="NASELJENO_MJESTO">
+                        <xs:complexType>
+                           <xs:attribute name="DR_OZNAKA" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="NM_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="NM_NAZIV" type="xs:string">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>   
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DR_NAZIV" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="NM_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DU_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DRZ_DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="OPSTINA">
+               <xs:complexType>
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="OP_IDENT" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="OP_NAZIV" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="NM_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="REGION">
+               <xs:complexType>
+                  <xs:attribute name="REG_TIP">
+                     <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                          <xs:enumeration value="D"/>
+                          <xs:enumeration value="P"/>
+                       </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="REG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="REG_NAZIV" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="VR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="NAS_DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="NM_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="SLOZENA_DRZAVA">
+               <xs:complexType>
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DRZ_DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="SL_OD" type="xs:dateTime">
+                  </xs:attribute>
+                  <xs:attribute name="SL_DO" type="xs:dateTime">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="DRZAVNO_URE_ENJE">
+               <xs:complexType>
+                  <xs:attribute name="DU_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DU_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="VRSTA_REGIONA">
+               <xs:complexType>
+                  <xs:attribute name="VR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="VR_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="ISTORIJA_URE_ENJA">
+               <xs:complexType>
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DU_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="IU_OD" type="xs:dateTime">
+                  </xs:attribute>
+                  <xs:attribute name="IU_DO" type="xs:dateTime">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="STRUKTURA">
+               <xs:complexType>
+                  <xs:attribute name="OPS_DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="OP_IDENT" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="NM_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="SASTAV_REGIONA">
+               <xs:complexType>
+                  <xs:attribute name="REG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="REG_TIP">
+                     <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                          <xs:enumeration value="D"/>
+                          <xs:enumeration value="P"/>
+                       </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="REG_REG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="REG_REG_TIP">
+                     <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                          <xs:enumeration value="D"/>
+                          <xs:enumeration value="P"/>
+                       </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="NASELJA_U_REGIONU">
+               <xs:complexType>
+                  <xs:attribute name="REG_TIP">
+                     <xs:simpleType>
+                       <xs:restriction base="xs:string">
+                          <xs:enumeration value="D"/>
+                          <xs:enumeration value="P"/>
+                       </xs:restriction>
+                     </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="REG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DR_OZNAKA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="NM_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>   
+      </xs:complexType>
+      <xs:key name="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+      </xs:key>
+      <xs:unique name="DRZAVA_PK">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="PRAVNI_NASLEDNIK_FK">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DRZ_DR_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="TEKUCE_FK">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DU_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="GLAVNI_GRAD_FK">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_3">
+         <xs:selector xpath="DRZAVA/NASELJENO_MJESTO"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+         <xs:field xpath="@NM_IDENT"/>
+      </xs:key>
+      <xs:unique name="NASELJENO_MJESTO_PK">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:unique name="IMA_NASELJA_FK">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_4">
+         <xs:selector xpath="OPSTINA"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+         <xs:field xpath="@OP_IDENT"/>
+      </xs:key>
+      <xs:unique name="OPSTINA_PK">
+         <xs:selector xpath="OPSTINA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="OP_IDENT"/>
+      </xs:unique>
+      <xs:unique name="LOKALNA_SAMOUPRAVA_FK">
+         <xs:selector xpath="OPSTINA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="ADMINISTRATIVNI_CENTAR_FK">
+         <xs:selector xpath="OPSTINA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_5">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="@REG_IDENT"/>
+         <xs:field xpath="@REG_TIP"/>
+      </xs:key>
+      <xs:unique name="REGION_PK">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:unique>
+      <xs:unique name="SEDISTE_REGIONA_FK">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="NAS_DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MATICNA_DRZAVA_FK">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="VRSTA_REGIONA_FK">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="VR_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_6">
+         <xs:selector xpath="SLOZENA_DRZAVA"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+         <xs:field xpath="@DRZ_DR_OZNAKA"/>
+         <xs:field xpath="@SL_OD"/>
+      </xs:key>
+      <xs:unique name="SLOZENA_DRZAVA_PK">
+         <xs:selector xpath="SLOZENA_DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="DRZ_DR_OZNAKA"/>
+         <xs:field xpath="SL_OD"/>
+      </xs:unique>
+      <xs:unique name="SLOZENA_FK">
+         <xs:selector xpath="SLOZENA_DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="CLANICA_FK">
+         <xs:selector xpath="SLOZENA_DRZAVA"/>
+         <xs:field xpath="DRZ_DR_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_7">
+         <xs:selector xpath="DRZAVNO_URE_ENJE"/>
+         <xs:field xpath="@DU_OZNAKA"/>
+      </xs:key>
+      <xs:unique name="DRZAVNO_URE_ENJE_PK">
+         <xs:selector xpath="DRZAVNO_URE_ENJE"/>
+         <xs:field xpath="DU_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_8">
+         <xs:selector xpath="VRSTA_REGIONA"/>
+         <xs:field xpath="@VR_OZNAKA"/>
+      </xs:key>
+      <xs:unique name="VRSTA_REGIONA_PK">
+         <xs:selector xpath="VRSTA_REGIONA"/>
+         <xs:field xpath="VR_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_9">
+         <xs:selector xpath="ISTORIJA_URE_ENJA"/>
+         <xs:field xpath="@DU_OZNAKA"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+         <xs:field xpath="@IU_OD"/>
+      </xs:key>
+      <xs:unique name="ISTORIJA_URE_ENJA_PK">
+         <xs:selector xpath="ISTORIJA_URE_ENJA"/>
+         <xs:field xpath="DU_OZNAKA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="IU_OD"/>
+      </xs:unique>
+      <xs:unique name="ISTORIJA_URE_ENJA_FK">
+         <xs:selector xpath="ISTORIJA_URE_ENJA"/>
+         <xs:field xpath="DU_OZNAKA"/>
+      </xs:unique>
+      <xs:unique name="ISTORIJA_URE_ENJA2_FK">
+         <xs:selector xpath="ISTORIJA_URE_ENJA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_10">
+         <xs:selector xpath="STRUKTURA"/>
+         <xs:field xpath="@OPS_DR_OZNAKA"/>
+         <xs:field xpath="@OP_IDENT"/>
+         <xs:field xpath="@NM_IDENT"/>
+      </xs:key>
+      <xs:unique name="STRUKTURA_PK">
+         <xs:selector xpath="STRUKTURA"/>
+         <xs:field xpath="OPS_DR_OZNAKA"/>
+         <xs:field xpath="OP_IDENT"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:unique name="STRUKTURA_FK">
+         <xs:selector xpath="STRUKTURA"/>
+         <xs:field xpath="OPS_DR_OZNAKA"/>
+         <xs:field xpath="OP_IDENT"/>
+      </xs:unique>
+      <xs:unique name="STRUKTURA2_FK">
+         <xs:selector xpath="STRUKTURA"/>
+         <xs:field xpath="OPS_DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_11">
+         <xs:selector xpath="SASTAV_REGIONA"/>
+         <xs:field xpath="@REG_IDENT"/>
+         <xs:field xpath="@REG_TIP"/>
+         <xs:field xpath="@REG_REG_IDENT"/>
+         <xs:field xpath="@REG_REG_TIP"/>
+      </xs:key>
+      <xs:unique name="SASTAV_REGIONA_PK">
+         <xs:selector xpath="SASTAV_REGIONA"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+         <xs:field xpath="REG_REG_IDENT"/>
+         <xs:field xpath="REG_REG_TIP"/>
+      </xs:unique>
+      <xs:unique name="SASTAV_REGIONA_FK">
+         <xs:selector xpath="SASTAV_REGIONA"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:unique>
+      <xs:unique name="SASTAV_REGIONA2_FK">
+         <xs:selector xpath="SASTAV_REGIONA"/>
+         <xs:field xpath="REG_REG_IDENT"/>
+         <xs:field xpath="REG_REG_TIP"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_1">
+         <xs:selector xpath="NASELJA_U_REGIONU"/>
+         <xs:field xpath="@DR_OZNAKA"/>
+         <xs:field xpath="@NM_IDENT"/>
+         <xs:field xpath="@REG_IDENT"/>
+         <xs:field xpath="@REG_TIP"/>
+      </xs:key>
+      <xs:unique name="NASELJA_U_REGIONU_PK">
+         <xs:selector xpath="NASELJA_U_REGIONU"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:unique>
+      <xs:unique name="NASELJA_U_REGIONU_FK">
+         <xs:selector xpath="NASELJA_U_REGIONU"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:unique>
+      <xs:unique name="NASELJA_U_REGIONU2_FK">
+         <xs:selector xpath="NASELJA_U_REGIONU"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:unique>
+      <xs:keyref name="PRAVNI_NASLEDNIK" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DRZ_DR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="SLOZENA" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="CLANICA" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DRZ_DR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="TEKUCE" refer="IDENTIFIER_7">
+         <xs:selector xpath="DRZAVNO_URE_ENJE"/>
+         <xs:field xpath="DU_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="LOKALNA_SAMOUPRAVA" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="STRUKTURA" refer="IDENTIFIER_4">
+         <xs:selector xpath="OPSTINA"/>
+         <xs:field xpath="OPS_DR_OZNAKA"/>
+         <xs:field xpath="OP_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="STRUKTURA2" refer="IDENTIFIER_3">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="OPS_DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="GLAVNI_GRAD" refer="IDENTIFIER_3">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="ADMINISTRATIVNI_CENTAR" refer="IDENTIFIER_3">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="SASTAV_REGIONA" refer="IDENTIFIER_5">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:keyref>
+      <xs:keyref name="SASTAV_REGIONA2" refer="IDENTIFIER_5">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="REG_REG_IDENT"/>
+         <xs:field xpath="REG_REG_TIP"/>
+      </xs:keyref>
+      <xs:keyref name="NASELJA_U_REGIONU" refer="IDENTIFIER_3">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="NASELJA_U_REGIONU2" refer="IDENTIFIER_5">
+         <xs:selector xpath="REGION"/>
+         <xs:field xpath="REG_IDENT"/>
+         <xs:field xpath="REG_TIP"/>
+      </xs:keyref>
+      <xs:keyref name="SEDISTE_REGIONA" refer="IDENTIFIER_3">
+         <xs:selector xpath="NASELJENO_MJESTO"/>
+         <xs:field xpath="NAS_DR_OZNAKA"/>
+         <xs:field xpath="NM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="MATICNA_DRZAVA" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="VRSTA_REGIONA" refer="IDENTIFIER_8">
+         <xs:selector xpath="VRSTA_REGIONA"/>
+         <xs:field xpath="VR_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="UREDJENJE_DRZAVE" refer="IDENTIFIER_7">
+         <xs:selector xpath="DRZAVNO_URE_ENJE"/>
+         <xs:field xpath="DU_OZNAKA"/>
+      </xs:keyref>
+      <xs:keyref name="ISTORIJA_URE_ENJA2" refer="IDENTIFIER_2">
+         <xs:selector xpath="DRZAVA"/>
+         <xs:field xpath="DR_OZNAKA"/>
+      </xs:keyref>
+   </xs:element>
+</xs:schema>

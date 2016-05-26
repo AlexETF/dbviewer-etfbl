@@ -132,6 +132,8 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     public void displayElements(final MetaModelSchemaElement schema) {
         Platform.runLater(new Runnable() {
             public void run() {
+                tabPaneRootElements.getTabs().clear();
+                tabPaneChildElements.getTabs().clear();
                 TreeItem<MetaModelSchemaElement> root = getRootElement(schema);
                 root.setExpanded(true);
                 treeSchemeElements.setRoot(root);
