@@ -5,7 +5,7 @@
  */
 package net.etfbl.dbviewer.code_generator;
 
-import net.etfbl.dbviewer.model.MetaModelSchema;
+import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
 /**
  *
@@ -13,5 +13,5 @@ import net.etfbl.dbviewer.model.MetaModelSchema;
  */
 public interface CodeGenerator {
     
-    boolean generateCode(String folderPath, MetaModelSchema schema);
+    boolean generateCode(String folderPath, MetaModelSchemaElement schema);
 }

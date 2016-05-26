@@ -5,7 +5,7 @@
  */
 package net.etfbl.dbviewer.bridge;
 
-import net.etfbl.dbviewer.model.MetaModelSchema;
+import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
 /**
  *
@@ -13,6 +13,6 @@ import net.etfbl.dbviewer.model.MetaModelSchema;
  */
 public interface DisplayMetaModelData {
     
-    public void displayElements(MetaModelSchema schema);
+    public void displayElements(MetaModelSchemaElement schema);
     
 }
