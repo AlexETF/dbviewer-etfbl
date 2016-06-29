@@ -1,13 +1,11 @@
 package net.etfbl.dbviewer.model;
 
-import org.apache.xerces.xs.XSElementDeclaration;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
+import org.apache.xerces.xs.XSElementDeclaration;
 
 public class MetaModelSchemaElement {
-
 	private String name;
 	private String type;
 	private int minOcurrs;
@@ -107,37 +105,8 @@ public class MetaModelSchemaElement {
 		this.children.add(child);
 	}
 
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MetaModelSchemaElement other = (MetaModelSchemaElement) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        return true;
-    }
-
 	public void addAttribute(MetaModelSchemaAttribute attribute) {
 		attributes.add(attribute);
 	}
-        
-        @Override
-        public String toString(){
-            return name;
-        }
 
 }

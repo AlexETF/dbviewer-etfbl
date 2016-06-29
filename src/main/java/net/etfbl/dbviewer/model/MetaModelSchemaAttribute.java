@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MetaModelSchemaAttribute {
-
 	private String name;
 	private boolean required;
 	private String type;
@@ -53,10 +52,5 @@ public class MetaModelSchemaAttribute {
 	public void setOptions(List<String> options) {
 		this.options = options;
 	}
-        
-        @Override
-        public String toString(){
-            return name;
-        }
 
 }

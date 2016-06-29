@@ -5,11 +5,17 @@
  */
 package net.etfbl.dbviewer.bridge;
 
+import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
+import net.etfbl.dbviewer.model.MetaModelSchemaElement;
+import org.xml.sax.SAXException;
+
 /**
  *
  * @author ZM
  */
 public interface ParseMetaModelStream {
     
-    boolean parse(String url);
+   boolean parse(String url);
+   
 }

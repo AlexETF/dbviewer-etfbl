@@ -14,5 +14,5 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 public interface DisplayMetaModelData {
     
     public void displayElements(MetaModelSchemaElement schema);
-    
+    public void displayErrorMessage(String message);
 }

@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import net.etfbl.dbviewer.database.ConnectionPool;
 
 /**
  *
@@ -22,11 +23,14 @@ public class DBViewer extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/DBViewer.fxml"));
         
         Scene scene = new Scene(root);
-
+        
+        ConnectionPool pool = ConnectionPool.getConnectionPool();
+        
         stage.setScene(scene);
         stage.setTitle("DBViewer - Master 2016, Banja Luka");
         stage.setMaximized(true);
         stage.show();
+        
     }
 
     /**

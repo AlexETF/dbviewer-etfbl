@@ -204,4 +204,9 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
             parentTabs.setFocusForElement(metaTab.getElement());
         }
     }
+
+    @Override
+    public void displayErrorMessage(String message) {
+        lblStatus.setText(message);
+    }
 }

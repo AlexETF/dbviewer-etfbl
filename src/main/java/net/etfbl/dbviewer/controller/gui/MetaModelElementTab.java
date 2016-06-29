@@ -19,8 +19,8 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
  */
 public class MetaModelElementTab extends Tab {
     
-    MetaModelSchemaElement element;
-    TableView attributes;
+    private MetaModelSchemaElement element;
+    private TableView attributes;
     
     public MetaModelElementTab(MetaModelSchemaElement element){
         this.element = element;
