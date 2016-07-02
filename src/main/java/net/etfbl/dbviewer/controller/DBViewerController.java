@@ -36,6 +36,8 @@ import net.etfbl.dbviewer.ibridge.ParseMetaModelStream;
 import net.etfbl.dbviewer.controller.gui.MetaModelAttributeTableColumn;
 import net.etfbl.dbviewer.controller.gui.MetaModelElementTab;
 import net.etfbl.dbviewer.controller.gui.MetaModelTabPaneController;
+import net.etfbl.dbviewer.icode_generator.CodeGenerator;
+import net.etfbl.dbviewer.ireports.ReportManager;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 import net.etfbl.dbviewer.parser.XSDSchemaParser;
 
@@ -92,7 +94,10 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     /*
      Non FXML Fields
      */
-    private ParseMetaModelStream parser;
+    private ParseMetaModelStream parserManager;
+    private ReportManager reportManager;
+    private CodeGenerator codeManager;
+    
     private MetaModelTabPaneController parentTabs;
     private MetaModelTabPaneController childrenTabs;
 
@@ -158,7 +163,7 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        parser = new XSDSchemaParser(this);
+        parserManager = new XSDSchemaParser(this);
         //define tree cell facory for meta model elements
         treeSchemeElements.setCellFactory(new Callback<TreeView<MetaModelSchemaElement>, TreeCell<MetaModelSchemaElement>>() {
             @Override
@@ -253,7 +258,7 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
         fileChooser.setTitle("Open XSD File");
         File file = fileChooser.showOpenDialog(new Stage());
         if (file != null) {
-            parser.parse(file.getAbsolutePath());
+            parserManager.parse(file.getAbsolutePath());
         }
     }
 
