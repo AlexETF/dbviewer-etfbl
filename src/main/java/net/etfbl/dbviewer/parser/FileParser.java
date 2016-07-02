@@ -5,8 +5,8 @@
  */
 package net.etfbl.dbviewer.parser;
 
-import net.etfbl.dbviewer.bridge.DisplayMetaModelData;
-import net.etfbl.dbviewer.bridge.ParseMetaModelStream;
+import net.etfbl.dbviewer.ibridge.DisplayMetaModelData;
+import net.etfbl.dbviewer.ibridge.ParseMetaModelStream;
 
 /**
  *

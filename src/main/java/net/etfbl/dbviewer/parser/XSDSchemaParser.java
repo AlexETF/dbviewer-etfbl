@@ -10,8 +10,8 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import net.etfbl.dbviewer.bridge.DisplayMetaModelData;
-import net.etfbl.dbviewer.bridge.ParseMetaModelStream;
+import net.etfbl.dbviewer.ibridge.DisplayMetaModelData;
+import net.etfbl.dbviewer.ibridge.ParseMetaModelStream;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.xerces.dom.DOMInputImpl;

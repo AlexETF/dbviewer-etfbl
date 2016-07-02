@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 public class ConnectionPool {
-	
+
     private String driver;
     private String jdbcURL;
     private String username;
@@ -23,63 +23,54 @@ public class ConnectionPool {
     private int maxConnections;
     private ArrayList<Connection> usedConnections;
     private ArrayList<Connection> freeConnections;
-    
+
     public static ConnectionPool getConnectionPool() {
         return connectionPool;
     }
     private static ConnectionPool connectionPool;
 
     static {
-    	Properties prop = new Properties();
-		InputStreamReader is = null;
-		String driver;
-		String jdbcURL;
-		String username;
-		String password;
-		int preconnectCount = 0;
+
+        Properties prop = new Properties();
+        InputStreamReader is = null;
+        String driver;
+        String jdbcURL;
+        String username;
+        String password;
+        int preconnectCount = 0;
         int maxIdleConnections = 10;
         int maxConnections = 10;
-        
-		try {
-                        //System.out.println(fxml.exists());
-			is = new InputStreamReader(ConnectionPool.class.getResourceAsStream("/db.properties"));
-			prop.load(is);
-		} catch (Exception e) {
-			// TODO LOG
-			e.printStackTrace();
-                        System.exit(-1);
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException ex) {
-					// TODO LOG
-					ex.printStackTrace();
-					// ignore
-				}
-			}
-		}
 
-		driver = prop.getProperty("driver");
-		jdbcURL = prop.getProperty("url");
-		username = prop.getProperty("username");
-		password = prop.getProperty("password");
-		
+        try {
+            is = new InputStreamReader(ConnectionPool.class.getResourceAsStream("/db.properties"));
+            prop.load(is);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        driver = prop.getProperty("driver");
+        jdbcURL = prop.getProperty("url");
+        username = prop.getProperty("username");
+        password = prop.getProperty("password");
         try {
             preconnectCount = Integer.parseInt(prop.getProperty("preconnectCount"));
             maxIdleConnections = Integer.parseInt(prop.getProperty("maxIdleConnections"));
             maxConnections = Integer.parseInt(prop.getProperty("maxConnections"));
-        } catch (Exception ex) {
-            ex.printStackTrace(System.err); // TODO LOG
-        }
-        
-        try {
+            
             connectionPool = new ConnectionPool(driver,
                     jdbcURL, username, password,
                     preconnectCount, maxIdleConnections,
                     maxConnections);
         } catch (Exception ex) {
-            ex.printStackTrace(System.err); // TODO LOG
+            ex.printStackTrace(System.err);
         }
     }
 

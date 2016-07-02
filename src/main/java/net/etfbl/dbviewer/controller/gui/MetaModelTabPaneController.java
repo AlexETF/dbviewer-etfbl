@@ -57,5 +57,9 @@ public class MetaModelTabPaneController {
              pane.getTabs().add(new MetaModelElementTab(element));
         }
     }
+    
+    public MetaModelElementTab getFocusedTab(){
+        return (MetaModelElementTab)pane.getSelectionModel().getSelectedItem();
+    }
 
 }

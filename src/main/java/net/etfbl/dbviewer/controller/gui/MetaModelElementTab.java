@@ -5,7 +5,11 @@
  */
 package net.etfbl.dbviewer.controller.gui;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -20,7 +24,7 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 public class MetaModelElementTab extends Tab {
     
     private MetaModelSchemaElement element;
-    private TableView attributes;
+    private TableView<MetaModelSchemaAttribute> attributes;
     
     public MetaModelElementTab(MetaModelSchemaElement element){
         this.element = element;
@@ -30,9 +34,10 @@ public class MetaModelElementTab extends Tab {
     private void InitTab(){
         setText(element.getName());
         BorderPane pane = new BorderPane();
-        attributes = new TableView();
+        attributes = new TableView<MetaModelSchemaAttribute>();
         for(MetaModelSchemaAttribute attr : element.getAttributes()){
-            attributes.getColumns().add(new TableColumn(attr.getName()));
+            TableColumn column = new MetaModelAttributeTableColumn(attr);
+            attributes.getColumns().add(column);
         }
         pane.setPadding(new Insets(10, 10, 10, 10));
         pane.setCenter(attributes);
@@ -44,5 +49,15 @@ public class MetaModelElementTab extends Tab {
         return element;
     }
     
+    public List<MetaModelAttributeTableColumn> getCheckedColumns(){
+        List<MetaModelAttributeTableColumn> checkedColumns = new ArrayList<MetaModelAttributeTableColumn>();
+        for(TableColumn column : attributes.getColumns()){
+            MetaModelAttributeTableColumn attributeColumn = (MetaModelAttributeTableColumn)column;
+            if(attributeColumn.isSelectedForReport()){
+                checkedColumns.add(attributeColumn);
+            }
+        }
+        return checkedColumns;
+    }
     
 }

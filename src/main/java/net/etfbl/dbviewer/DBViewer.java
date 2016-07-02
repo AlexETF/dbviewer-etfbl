@@ -25,7 +25,6 @@ public class DBViewer extends Application {
         Scene scene = new Scene(root);
         
         ConnectionPool pool = ConnectionPool.getConnectionPool();
-        
         stage.setScene(scene);
         stage.setTitle("DBViewer - Master 2016, Banja Luka");
         stage.setMaximized(true);

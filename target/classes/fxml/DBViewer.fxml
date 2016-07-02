@@ -18,6 +18,13 @@
                            <center>
                               <TreeView fx:id="treeSchemeElements" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
                            </center>
+                           <bottom>
+                              <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                <items>
+                                  <Button fx:id="btnGenerateSchemaReport" mnemonicParsing="false" onAction="#btnGenerateSchemaReportClicked" text="Generate Report" />
+                                </items>
+                              </ToolBar>
+                           </bottom>
                         </BorderPane>
                      </children>
                   </AnchorPane>
@@ -28,32 +35,62 @@
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
                                     <BorderPane prefHeight="183.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <top>
-                                          <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                            <items>
-                                              <Button fx:id="btnMoveDown" mnemonicParsing="false" onAction="#btnMoveDownPressed" text="Move down" />
-                                            </items>
-                                          </ToolBar>
-                                       </top>
                                        <center>
                                           <TabPane fx:id="tabPaneRootElements" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
                                        </center>
+                                       <top>
+                                          <BorderPane prefHeight="33.0" prefWidth="647.0" BorderPane.alignment="CENTER">
+                                             <left>
+                                                <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="147.0" BorderPane.alignment="CENTER">
+                                                  <items>
+                                                    <Button fx:id="btnMoveDown" mnemonicParsing="false" onAction="#btnMoveDownPressed" text="Move down" />
+                                                  </items>
+                                                </ToolBar>
+                                             </left>
+                                             <center>
+                                                <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="36.0" prefWidth="515.0" BorderPane.alignment="CENTER">
+                                                  <items>
+                                                    <Button fx:id="btnGenerateParentReport" mnemonicParsing="false" onAction="#btnGenerateParentReportClicked" text="Generate Report" />
+                                                      <Label minWidth="45.0" />
+                                                      <Button fx:id="btnEditParentRow" maxWidth="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#btnEditParentRowClicked" prefWidth="75.0" text="Edit" />
+                                                      <Button fx:id="btnDeleteParentRow" maxWidth="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#btnDeleteParentRowClicked" prefWidth="75.0" text="Delete " />
+                                                      <Button fx:id="btnAddParentRow" maxWidth="75.0" minWidth="75.0" mnemonicParsing="false" onAction="#btnAddParentRowClicked" prefWidth="75.0" text="Add" />
+                                                  </items>
+                                                </ToolBar>
+                                             </center>
+                                          </BorderPane>
+                                       </top>
                                     </BorderPane>
                                  </children>
                               </AnchorPane>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
                                     <BorderPane layoutX="63.0" layoutY="-8.0" prefHeight="183.0" prefWidth="585.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <top>
-                                          <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                            <items>
-                                              <Button fx:id="btnMoveUp" mnemonicParsing="false" onAction="#btnMoveUpPressed" text="Move up" />
-                                            </items>
-                                          </ToolBar>
-                                       </top>
                                        <center>
                                           <TabPane fx:id="tabPaneChildElements" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
                                        </center>
+                                       <top>
+                                          <BorderPane prefHeight="33.0" prefWidth="647.0" BorderPane.alignment="CENTER">
+                                             <left>
+                                                <ToolBar prefHeight="39.0" prefWidth="153.0" BorderPane.alignment="CENTER">
+                                                  <items>
+                                                    <Button fx:id="btnMoveUp" minWidth="75.0" mnemonicParsing="false" onAction="#btnMoveUpPressed" text="Move up" />
+                                                  </items>
+                                                </ToolBar>
+                                             </left>
+                                             <center>
+                                                <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="489.0" BorderPane.alignment="CENTER">
+                                                  <items>
+                                                    <Button fx:id="btnGenerateChildReport" mnemonicParsing="false" onAction="#btnGenerateChildReportClicked" text="Generate Report" />
+                                                      <Label minWidth="45.0" />
+                                                      <Button fx:id="btnEditChildRow" minWidth="75.0" mnemonicParsing="false" onAction="#btnEditChildRowClicked" text="Edit" />
+                                                      <Button fx:id="btnDeleteChildRow" minWidth="75.0" mnemonicParsing="false" onAction="#btnDeleteChildRowClicked" text="Delete" />
+                                                      <Button fx:id="btnAddChildRow" minWidth="75.0" mnemonicParsing="false" onAction="#btnAddChildRowClicked" text="Add" />
+                                                  </items>
+                                                </ToolBar>
+                                             </center>
+                                          </BorderPane>
+                                       </top>
                                     </BorderPane>
                                  </children>
                               </AnchorPane>

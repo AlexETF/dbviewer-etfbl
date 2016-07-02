@@ -5,7 +5,8 @@ import java.sql.PreparedStatement;
 import net.etfbl.dbviewer.database.ConnectionPool;
 
 public class HijerarhijaTabelaDAO {
-	static final String SQL_ADD_ENTRY = "INSERT INTO hijerarhija_tabela (TAB_TBL_KOD,TBL_KOD,HIJ_NIVOST,HIJ_PARPOZ,HIJ_CHRBR) VALUES (?,?,?,?,?)";
+	
+    static final String SQL_ADD_ENTRY = "INSERT INTO hijerarhija_tabela (TAB_TBL_KOD,TBL_KOD,HIJ_NIVOST,HIJ_PARPOZ,HIJ_CHRBR) VALUES (?,?,?,?,?)";
 	
 	public static boolean addEntry(String tblParent, String tblChild, int treeLevel, int parentPosition, int position) {
 		Connection conn = null;
