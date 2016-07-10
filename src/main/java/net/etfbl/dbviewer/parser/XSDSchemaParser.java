@@ -40,7 +40,7 @@ import org.w3c.dom.bootstrap.DOMImplementationRegistry;
 import org.w3c.dom.ls.LSInput;
 import org.xml.sax.SAXException;
 
-import net.etfbl.dbviewer.dao.HijerarhijaTabelaDAO;
+import net.etfbl.dbviewer.database.mysql.dao.HijerarhijaTabelaDAO;
 import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 import net.etfbl.dbviewer.model.TreeElement;
@@ -64,7 +64,7 @@ public class XSDSchemaParser implements ParseMetaModelStream, DOMErrorHandler {
                 }
                 return true;
             }catch(Exception ex){
-                _visualizer.displayErrorMessage("Failed to parse file on path " + url);
+                _visualizer.displayStatusMessage("Failed to parse file on path " + url);
             }
             return false;
         }

@@ -5,11 +5,13 @@
  */
 package net.etfbl.dbviewer.controller;
 
-
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -36,8 +38,18 @@ import net.etfbl.dbviewer.ibridge.ParseMetaModelStream;
 import net.etfbl.dbviewer.controller.gui.MetaModelAttributeTableColumn;
 import net.etfbl.dbviewer.controller.gui.MetaModelElementTab;
 import net.etfbl.dbviewer.controller.gui.MetaModelTabPaneController;
+import net.etfbl.dbviewer.database.IDatabaseManager;
+import net.etfbl.dbviewer.database.mysql.MySQLDatabaseManager;
+import net.etfbl.dbviewer.database.mysql.dao.HijerarhijaTabelaDAO;
+import net.etfbl.dbviewer.database.mysql.dao.PoljaDAO;
+import net.etfbl.dbviewer.database.mysql.dao.TabeleDAO;
+import net.etfbl.dbviewer.database.mysql.dto.HijerarhijaTabelaDTO;
+import net.etfbl.dbviewer.database.mysql.dto.PoljeDTO;
+import net.etfbl.dbviewer.database.mysql.dto.TabelaDTO;
 import net.etfbl.dbviewer.icode_generator.CodeGenerator;
 import net.etfbl.dbviewer.ireports.ReportManager;
+import net.etfbl.dbviewer.ireports.dynamic.DynamicReportManager;
+import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 import net.etfbl.dbviewer.parser.XSDSchemaParser;
 
@@ -97,7 +109,8 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     private ParseMetaModelStream parserManager;
     private ReportManager reportManager;
     private CodeGenerator codeManager;
-    
+    private IDatabaseManager dbManager;
+
     private MetaModelTabPaneController parentTabs;
     private MetaModelTabPaneController childrenTabs;
 
@@ -115,7 +128,7 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     void btnLoadXsdPressed(ActionEvent event) {
         openXsdFile();
     }
-    
+
     @FXML
     void btnGenerateSchemaReportClicked(ActionEvent event) {
         generateHierarchialReport();
@@ -123,7 +136,12 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
     @FXML
     void btnGenerateParentReportClicked(ActionEvent event) {
-        generateParentReport();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                generateParentReport();
+            }
+        });
     }
 
     @FXML
@@ -143,7 +161,12 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
     @FXML
     void btnGenerateChildReportClicked(ActionEvent event) {
-        generateParentChildReport();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                generateParentChildReport();
+            }
+        });
     }
 
     @FXML
@@ -164,6 +187,8 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         parserManager = new XSDSchemaParser(this);
+        dbManager = new MySQLDatabaseManager();
+        reportManager = new DynamicReportManager(dbManager);
         //define tree cell facory for meta model elements
         treeSchemeElements.setCellFactory(new Callback<TreeView<MetaModelSchemaElement>, TreeCell<MetaModelSchemaElement>>() {
             @Override
@@ -202,11 +227,22 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
             }
         });
-        parentTabs = new MetaModelTabPaneController(tabPaneRootElements);
-        childrenTabs = new MetaModelTabPaneController(tabPaneChildElements);
+
+        tabPaneChildElements.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Tab>() {
+            @Override
+            public void changed(ObservableValue<? extends Tab> observable, Tab oldTab, Tab newTab) {
+                if (newTab instanceof MetaModelElementTab) {
+                    MetaModelElementTab tab = (MetaModelElementTab) newTab;
+                    tab.loadData();
+                }
+            }
+        });
+
+        parentTabs = new MetaModelTabPaneController(tabPaneRootElements, dbManager);
+        childrenTabs = new MetaModelTabPaneController(tabPaneChildElements, dbManager);
         //setting images on buttons
         Image imageAdd = new Image(getClass().getResourceAsStream("/images/add.png"));
-        Image imageEdit = new Image(getClass().getResourceAsStream("/images/edit.png")); 
+        Image imageEdit = new Image(getClass().getResourceAsStream("/images/edit.png"));
         Image imageDelete = new Image(getClass().getResourceAsStream("/images/delete.png"));
         Image imageReport = new Image(getClass().getResourceAsStream("/images/report.png"));
         Image imageMoveUp = new Image(getClass().getResourceAsStream("/images/moveup.png"));
@@ -224,6 +260,15 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
         btnLoadXsd.setGraphic(new ImageView(imageLoadXsd));
         btnMoveUp.setGraphic(new ImageView(imageMoveUp));
         btnMoveDown.setGraphic(new ImageView(imageMoveDown));
+
+        //loading data from DB
+        lblStatus.setText("Please wait. Loading data from database ...");
+        Thread loadThread = new Thread() {
+            public void run() {
+                loadDataFromDatabase();
+            }
+        };
+        loadThread.start();
     }
 
     @Override
@@ -238,10 +283,31 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
             }
         });
     }
-    
+
     @Override
-    public void displayErrorMessage(String message) {
-        lblStatus.setText(message);
+    public void displayStatusMessage(final String message) {
+        Platform.runLater(new Runnable() {
+            public void run() {
+                lblStatus.setText(message);
+            }
+        });
+    }
+
+    private void loadDataFromDatabase() {
+        int minimumLevel = HijerarhijaTabelaDAO.getMinTreeLevel();
+        int maximumLevel = HijerarhijaTabelaDAO.getMaxTreeLevel();
+        if (minimumLevel == -1 || maximumLevel == -1 || minimumLevel > maximumLevel) {
+            displayStatusMessage("Error: Minimum or maximum level not correct");
+            return;
+        }
+        List<HijerarhijaTabelaDTO> root = HijerarhijaTabelaDAO.getAllAtLevel(minimumLevel);
+        if (root.size() > 1) {
+            displayStatusMessage("Error: There are more than 1 root element");
+            return;
+        }
+        MetaModelSchemaElement element = constructRootElement(root.get(0));
+        displayElements(element);
+        displayStatusMessage("Data loaded");
     }
 
     private TreeItem<MetaModelSchemaElement> getRootElement(MetaModelSchemaElement schema) {
@@ -278,6 +344,7 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
         Tab tab = tabPaneRootElements.getSelectionModel().getSelectedItem();
         if (tab != null) {
             MetaModelElementTab metaTab = (MetaModelElementTab) tab;
+            metaTab.loadData();
             MetaModelSchemaElement value = metaTab.getElement();
             childrenTabs.setSubElementTabs(value);
             lblStatus.setText(value.getName());
@@ -291,9 +358,9 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
             tabPaneRootElements.getTabs().remove(metaTab);
             tabPaneChildElements.getTabs().clear();
             MetaModelSchemaElement parent = metaTab.getElement().getParent();
-            if(parent != null){
+            if (parent != null) {
                 parentTabs.setFocusForElement(parent);
-            }else {
+            } else {
                 tabPaneRootElements.getTabs().clear();
             }
             childrenTabs.setFocusForElement(metaTab.getElement());
@@ -302,7 +369,7 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
     private void moveChildTabToParentTab() {
         Tab tab = tabPaneChildElements.getSelectionModel().getSelectedItem();
-        if(tab != null) {
+        if (tab != null) {
             MetaModelElementTab metaTab = (MetaModelElementTab) tab;
             parentTabs.setFocusForElement(metaTab.getElement());
         }
@@ -310,30 +377,86 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
 
     private void generateParentReport() {
         MetaModelElementTab tab = parentTabs.getFocusedTab();
-        if(tab != null){
-            List<MetaModelAttributeTableColumn> columns = tab.getCheckedColumns();
-            lblStatus.setText("Number of selected columns: " + columns.size());
-        }else {
+        if (tab == null) {
             lblStatus.setText("Tab not selected");
+            return;
+        }
+        List<MetaModelAttributeTableColumn> columns = tab.getCheckedColumns();
+        if (columns.size() == 0) {
+            lblStatus.setText("ERROR: All columns for report are unchecked");
+            return;
+        }
+        List<MetaModelSchemaAttribute> attributes = new ArrayList<MetaModelSchemaAttribute>();
+        for (MetaModelAttributeTableColumn column : columns) {
+            attributes.add(column.getAttribute());
+        }
+        lblStatus.setText("Generating report. Please wait ...");
+        try {
+            new Thread(new Runnable() {
+                public void run() {
+                    String text = "Report finished";
+                    try {
+                        reportManager.generateTableReport(tab.getElement(), attributes);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        text = "Failed to retrieve report";
+                    }
+                    final String text2 = text;
+                    Platform.runLater(new Runnable() {
+                        public void run() {
+                            lblStatus.setText(text2);
+                        }
+                    });
+                }
+            }).start();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            lblStatus.setText("Failed to retrieve report");
         }
     }
 
     private void generateHierarchialReport() {
         TreeItem<MetaModelSchemaElement> item = treeSchemeElements.getSelectionModel().getSelectedItem();
-        if(item != null){
-            //lblStatus.setText("Selected ");
-        }else {
+        if (item == null) {
             lblStatus.setText("Meta model element not selected");
+            return;
         }
     }
 
     private void generateParentChildReport() {
         MetaModelElementTab tab = childrenTabs.getFocusedTab();
-        if(tab != null){
-            List<MetaModelAttributeTableColumn> columns = tab.getCheckedColumns();
-            lblStatus.setText("Number of selected columns: " + columns.size());
-        }else {
+        if (tab == null) {
             lblStatus.setText("Tab not selected");
+            return;
         }
+        List<MetaModelAttributeTableColumn> columns = tab.getCheckedColumns();
+        lblStatus.setText("Number of selected columns: " + columns.size());
+    }
+
+    private MetaModelSchemaElement convertToMetaElement(HijerarhijaTabelaDTO hdto) {
+        MetaModelSchemaElement element = new MetaModelSchemaElement();
+        TabelaDTO table = TabeleDAO.getTable(hdto.getSecTable());
+        List<PoljeDTO> fields = PoljaDAO.getAllForTable(table.getCode());
+        table.setColumns(fields);
+        element.setName(table.getLabel());
+        element.setCode(table.getCode());
+        for (PoljeDTO field : fields) {
+            MetaModelSchemaAttribute attribute = new MetaModelSchemaAttribute();
+            attribute.setName(field.getPoljeLabela());
+            attribute.setCode(field.getPoljeKod());
+            element.getAttributes().add(attribute);
+        }
+        return element;
+    }
+
+    private MetaModelSchemaElement constructRootElement(HijerarhijaTabelaDTO hdto) {
+        MetaModelSchemaElement root = convertToMetaElement(hdto);
+        List<HijerarhijaTabelaDTO> children = HijerarhijaTabelaDAO.getForTableAtLevel(hdto.getSecTable(), hdto.getTreeLevel() + 1);
+        for (HijerarhijaTabelaDTO child : children) {
+            MetaModelSchemaElement element = constructRootElement(child);
+            element.setParent(root);
+            root.getChildren().add(element);
+        }
+        return root;
     }
 }

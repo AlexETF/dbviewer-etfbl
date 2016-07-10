@@ -7,6 +7,7 @@ package net.etfbl.dbviewer.controller.gui;
 
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import net.etfbl.dbviewer.database.IDatabaseManager;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
 /**
@@ -16,15 +17,17 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 public class MetaModelTabPaneController {
 
     private TabPane pane;
-
-    public MetaModelTabPaneController(TabPane pane) {
+    IDatabaseManager dbManager;
+    
+    public MetaModelTabPaneController(TabPane pane, IDatabaseManager manager) {
         this.pane = pane;
+        this.dbManager = manager;
     }
 
     public void setFocusForElement(MetaModelSchemaElement element) {
         MetaModelElementTab metaTab = getTabForElement(element);
         if (metaTab == null) {
-            metaTab = new MetaModelElementTab(element);
+            metaTab = new MetaModelElementTab(element, dbManager);
         }
         if (!pane.getTabs().contains(metaTab)){
             pane.getTabs().add(metaTab);
@@ -54,7 +57,7 @@ public class MetaModelTabPaneController {
     public void setSubElementTabs(MetaModelSchemaElement value) {
         pane.getTabs().clear();
         for(MetaModelSchemaElement element : value.getChildren()){
-             pane.getTabs().add(new MetaModelElementTab(element));
+             pane.getTabs().add(new MetaModelElementTab(element, dbManager));
         }
     }
     

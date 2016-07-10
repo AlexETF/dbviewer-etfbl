@@ -6,107 +6,117 @@ import java.util.List;
 import org.apache.xerces.xs.XSElementDeclaration;
 
 public class MetaModelSchemaElement {
-	private String name;
-	private String type;
-	private int minOcurrs;
-	private int maxOcurrs;
-	private boolean maxOcurrsUnbounded;
-	private XSElementDeclaration xsDeclaration;
-	private String defaultValue;
 
-	private MetaModelSchemaElement parent;
-	private List<MetaModelSchemaAttribute> attributes = new ArrayList<MetaModelSchemaAttribute>();
-	private List<MetaModelSchemaElement> children = new ArrayList<MetaModelSchemaElement>();
+    private String name;
+    private String code;
+    private String type;
+    private int minOcurrs;
+    private int maxOcurrs;
+    private boolean maxOcurrsUnbounded;
+    private XSElementDeclaration xsDeclaration;
+    private String defaultValue;
 
-	public MetaModelSchemaElement() {
-	}
+    private MetaModelSchemaElement parent;
+    private List<MetaModelSchemaAttribute> attributes = new ArrayList<MetaModelSchemaAttribute>();
+    private List<MetaModelSchemaElement> children = new ArrayList<MetaModelSchemaElement>();
 
-	public String getName() {
-		return name;
-	}
+    public MetaModelSchemaElement() {
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public int getMinOcurrs() {
-		return minOcurrs;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public void setMinOcurrs(int minOcurrs) {
-		this.minOcurrs = minOcurrs;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public int getMaxOcurrs() {
-		return maxOcurrs;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setMaxOcurrs(int maxOcurrs) {
-		this.maxOcurrs = maxOcurrs;
-	}
+    public int getMinOcurrs() {
+        return minOcurrs;
+    }
 
-	public boolean isMaxOcurrsUnbounded() {
-		return maxOcurrsUnbounded;
-	}
+    public void setMinOcurrs(int minOcurrs) {
+        this.minOcurrs = minOcurrs;
+    }
 
-	public void setMaxOcurrsUnbounded(boolean maxOcurrsUnbounded) {
-		this.maxOcurrsUnbounded = maxOcurrsUnbounded;
-	}
+    public int getMaxOcurrs() {
+        return maxOcurrs;
+    }
 
-	public XSElementDeclaration getXsDeclaration() {
-		return xsDeclaration;
-	}
+    public void setMaxOcurrs(int maxOcurrs) {
+        this.maxOcurrs = maxOcurrs;
+    }
 
-	public void setXsDeclaration(XSElementDeclaration xsDeclaration) {
-		this.xsDeclaration = xsDeclaration;
-	}
+    public boolean isMaxOcurrsUnbounded() {
+        return maxOcurrsUnbounded;
+    }
 
-	public String getDefaultValue() {
-		return defaultValue;
-	}
+    public void setMaxOcurrsUnbounded(boolean maxOcurrsUnbounded) {
+        this.maxOcurrsUnbounded = maxOcurrsUnbounded;
+    }
 
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public XSElementDeclaration getXsDeclaration() {
+        return xsDeclaration;
+    }
 
-	public MetaModelSchemaElement getParent() {
-		return parent;
-	}
+    public void setXsDeclaration(XSElementDeclaration xsDeclaration) {
+        this.xsDeclaration = xsDeclaration;
+    }
 
-	public void setParent(MetaModelSchemaElement parent) {
-		this.parent = parent;
-	}
+    public String getDefaultValue() {
+        return defaultValue;
+    }
 
-	public List<MetaModelSchemaAttribute> getAttributes() {
-		return attributes;
-	}
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
 
-	public void setAttributes(List<MetaModelSchemaAttribute> attributes) {
-		this.attributes = attributes;
-	}
+    public MetaModelSchemaElement getParent() {
+        return parent;
+    }
 
-	public List<MetaModelSchemaElement> getChildren() {
-		return children;
-	}
+    public void setParent(MetaModelSchemaElement parent) {
+        this.parent = parent;
+    }
 
-	public void setChildren(List<MetaModelSchemaElement> children) {
-		this.children = children;
-	}
+    public List<MetaModelSchemaAttribute> getAttributes() {
+        return attributes;
+    }
 
-	public void addChild(MetaModelSchemaElement child) {
-		this.children.add(child);
-	}
+    public void setAttributes(List<MetaModelSchemaAttribute> attributes) {
+        this.attributes = attributes;
+    }
 
-	public void addAttribute(MetaModelSchemaAttribute attribute) {
-		attributes.add(attribute);
-	}
+    public List<MetaModelSchemaElement> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<MetaModelSchemaElement> children) {
+        this.children = children;
+    }
+
+    public void addChild(MetaModelSchemaElement child) {
+        this.children.add(child);
+    }
+
+    public void addAttribute(MetaModelSchemaAttribute attribute) {
+        attributes.add(attribute);
+    }
 
 }

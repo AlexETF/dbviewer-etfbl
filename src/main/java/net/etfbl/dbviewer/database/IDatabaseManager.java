@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.etfbl.dbviewer.ibridge;
+package net.etfbl.dbviewer.database;
 
+import java.util.List;
+import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
 /**
  *
  * @author ZM
  */
-public interface DisplayMetaModelData {
+public interface IDatabaseManager {
     
-    public void displayElements(MetaModelSchemaElement schema);
-    public void displayStatusMessage(String message);
+    String generateTableQuery(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes);
+    
 }

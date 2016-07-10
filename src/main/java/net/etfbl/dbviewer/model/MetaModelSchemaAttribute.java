@@ -4,53 +4,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MetaModelSchemaAttribute {
-	private String name;
-	private boolean required;
-	private String type;
-	private String defaultValue;
-	private List<String> options = new ArrayList<String>();
 
-	public MetaModelSchemaAttribute() {
-	}
+    private String name;
+    private String code;
+    private boolean required;
+    private String type;
+    private String defaultValue;
+    private List<String> options = new ArrayList<String>();
 
-	public String getName() {
-		return name;
-	}
+    public MetaModelSchemaAttribute() {
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public boolean isRequired() {
-		return required;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setRequired(boolean required) {
-		this.required = required;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public boolean isRequired() {
+        return required;
+    }
 
-	public String getDefaultValue() {
-		return defaultValue;
-	}
+    public void setRequired(boolean required) {
+        this.required = required;
+    }
 
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public List<String> getOptions() {
-		return options;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setOptions(List<String> options) {
-		this.options = options;
-	}
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public List<String> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<String> options) {
+        this.options = options;
+    }
 
 }
