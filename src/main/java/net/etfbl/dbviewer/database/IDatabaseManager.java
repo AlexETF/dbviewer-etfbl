@@ -16,5 +16,6 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 public interface IDatabaseManager {
     
     String generateTableQuery(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes);
+    String generateParentChildReportQuery(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes, List<MetaModelSchemaAttribute> parentAttributes);
     
 }

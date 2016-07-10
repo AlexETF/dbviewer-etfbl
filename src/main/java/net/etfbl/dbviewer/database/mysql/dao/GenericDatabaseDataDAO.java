@@ -27,6 +27,7 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
  */
 public class GenericDatabaseDataDAO {
     
+    
     public static List<GenericDatabaseRowDTO> getData(MetaModelSchemaElement element){
         List<GenericDatabaseRowDTO> data = new ArrayList<GenericDatabaseRowDTO>();
         Connection conn = null;

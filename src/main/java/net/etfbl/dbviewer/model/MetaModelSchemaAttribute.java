@@ -62,5 +62,20 @@ public class MetaModelSchemaAttribute {
     public void setOptions(List<String> options) {
         this.options = options;
     }
-
+    
+    @Override
+    public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
+        if(this == o){
+            return true;
+        }
+        if(o instanceof MetaModelSchemaAttribute){
+            MetaModelSchemaAttribute attr = (MetaModelSchemaAttribute)o;
+            return code.equals(attr.code) && name.equals(attr.name);
+        }else {
+            return false;
+        }
+    }
 }

@@ -13,6 +13,7 @@ import java.util.Properties;
 
 public class ConnectionPool {
 
+    private String databaseName;
     private String driver;
     private String jdbcURL;
     private String username;
@@ -33,6 +34,7 @@ public class ConnectionPool {
 
         Properties prop = new Properties();
         InputStreamReader is = null;
+        String databaseName;
         String driver;
         String jdbcURL;
         String username;
@@ -60,12 +62,13 @@ public class ConnectionPool {
         jdbcURL = prop.getProperty("url");
         username = prop.getProperty("username");
         password = prop.getProperty("password");
+        databaseName = prop.getProperty("databaseName");
         try {
             preconnectCount = Integer.parseInt(prop.getProperty("preconnectCount"));
             maxIdleConnections = Integer.parseInt(prop.getProperty("maxIdleConnections"));
             maxConnections = Integer.parseInt(prop.getProperty("maxConnections"));
             
-            connectionPool = new ConnectionPool(driver,
+            connectionPool = new ConnectionPool(databaseName, driver,
                     jdbcURL, username, password,
                     preconnectCount, maxIdleConnections,
                     maxConnections);
@@ -74,13 +77,14 @@ public class ConnectionPool {
         }
     }
 
-    protected ConnectionPool(String aDriver,
+    protected ConnectionPool(String aDatabaseName, String aDriver,
             String aJdbcURL, String aUsername,
             String aPassword, int aPreconnectCount,
             int aMaxIdleConnections,
             int aMaxConnections)
             throws ClassNotFoundException, SQLException {
-
+        
+        databaseName = aDatabaseName;
         freeConnections = new ArrayList<Connection>();
         usedConnections = new ArrayList<Connection>();
         driver = aDriver;
@@ -99,6 +103,10 @@ public class ConnectionPool {
             freeConnections.add(conn);
         }
         connectCount = preconnectCount;
+    }
+
+    public String getDatabaseName() {
+        return databaseName;
     }
 
     public synchronized Connection checkOut()

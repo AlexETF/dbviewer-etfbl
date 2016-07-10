@@ -424,13 +424,38 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
     }
 
     private void generateParentChildReport() {
+        MetaModelElementTab parentTab = parentTabs.getFocusedTab();
+        if (parentTab == null) {
+            lblStatus.setText("Parent Tab not selected");
+            return;
+        }
+        List<MetaModelAttributeTableColumn> parentColumns = parentTab.getCheckedColumns();
+        List<MetaModelSchemaAttribute> parentAttributes = parentColumns.stream().map(x -> x.getAttribute()).collect(Collectors.toList());
         MetaModelElementTab tab = childrenTabs.getFocusedTab();
         if (tab == null) {
             lblStatus.setText("Tab not selected");
             return;
         }
         List<MetaModelAttributeTableColumn> columns = tab.getCheckedColumns();
-        lblStatus.setText("Number of selected columns: " + columns.size());
+        List<MetaModelSchemaAttribute> attributes = columns.stream().map(x -> x.getAttribute()).collect(Collectors.toList());
+        lblStatus.setText("Generating report. Please wait ...");
+        new Thread(new Runnable() {
+                public void run() {
+                    String text = "Report finished";
+                    try {
+                        reportManager.generateParentChildReport(tab.getElement(), attributes, parentAttributes);
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        text = "Failed to retrieve report";
+                    }
+                    final String text2 = text;
+                    Platform.runLater(new Runnable() {
+                        public void run() {
+                            lblStatus.setText(text2);
+                        }
+                    });
+                }
+            }).start();
     }
 
     private MetaModelSchemaElement convertToMetaElement(HijerarhijaTabelaDTO hdto) {

@@ -73,11 +73,41 @@ public class DynamicReportManager implements ReportManager {
         } finally {
             ConnectionPool.getConnectionPool().checkIn(connection);
         }
-
     }
 
-    public void generateParentChildReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns) {
-        
+    public void generateParentChildReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns,  List<MetaModelSchemaAttribute> parentColumns) {
+        String query = databaseManager.generateParentChildReportQuery(element, columns, parentColumns);
+        Connection connection = null;
+        try {
+            if(query == null){
+                throw new IllegalArgumentException("Query is null");
+            }
+            connection = ConnectionPool.getConnectionPool().checkOut();
+            JasperReportBuilder report = DynamicReports.report();
+            
+            for (int i = 0; i < parentColumns.size(); i++) {
+                TextColumnBuilder<String> column
+                        = Columns.column("Parent " + parentColumns.get(i).getName(), parentColumns.get(i).getCode(), DataTypes.stringType());
+                column.setStyle(ColumnStyles[i % ColumnStyles.length]);
+                
+                report.addColumn(column);
+            }
+            
+            for (int i = 0; i < columns.size(); i++) {
+                TextColumnBuilder<String> column
+                        = Columns.column(columns.get(i).getName(), columns.get(i).getCode(), DataTypes.stringType());
+                column.setStyle(ColumnStyles[i % ColumnStyles.length]);
+                
+                report.addColumn(column);
+            }
+            report.setDataSource(query, connection);
+            report.show(false);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getConnectionPool().checkIn(connection);
+        }
     }
 
     public void generateHierarchialReport(MetaModelSchemaElement element) {
