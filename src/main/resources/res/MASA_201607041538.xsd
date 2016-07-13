@@ -1,0 +1,1055 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema 
+   elementFormDefault="qualified"
+   version="1.0"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="Database">
+      <xs:complexType>
+         <xs:sequence>
+            <xs:element name="ETP_ETNICKA_PRIPADNOST">
+               <xs:complexType>
+                  <xs:attribute name="ETP_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ETP_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="KVA_KVALIFIKACIJE">
+               <xs:complexType>
+                  <xs:attribute name="KVA_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="KVA_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="ORT_ORGANIZACIJA_TIP">
+               <xs:complexType>
+                  <xs:attribute name="ORT_IDENT" type="xs:short">
+                  </xs:attribute>
+                  <xs:attribute name="ORT_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="VIN_VRSTA_INVALIDNOSTI">
+               <xs:complexType>
+                  <xs:attribute name="VIN_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="VIN_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="VIM_VRSTA_IMUNIZACIJE">
+               <xs:complexType>
+                  <xs:attribute name="VIM_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="VIM_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="ORG_ORGANIZACIJA">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="SAL_SALA">
+                        <xs:complexType>
+                           <xs:attribute name="ORG_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="SAL_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="SAL_NAZIV" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="SAL_BROJ" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="SAL_NAPO" type="xs:string">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="VOZ_VOZILO">
+                        <xs:complexType>
+                           <xs:attribute name="ORG_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="VOZ_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="VOZ_REGBR" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="VOZ_MARKA" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="VOZ_REGDAT" type="xs:date">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>   
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ORT_IDENT" type="xs:short">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_NAZIV" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_ADR" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_TELP" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_TELS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_JIB" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_IB" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_PDVO" type="xs:boolean">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_EMAIL" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_FAX" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_WEB" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="URE_MEDICINSKI_UREDJAJ">
+               <xs:complexType>
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="URE_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="URT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="URE_PROIZV" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="URE_MODEL" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="URE_VERZIJA" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="URE_STATUS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="URE_DATPROIZV" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="URE_DATISTEKA" type="xs:date">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="PAS_PACIJENT_SOCIJALNI_PODACI">
+               <xs:complexType>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ETP_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="KVA_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_BRSTATUS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_BRDJECE" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_SOCSTATUS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_BRPOR" type="xs:decimal">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_MIGRANT" type="xs:boolean">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_BESKUCNIK" type="xs:boolean">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_SEZRADNIK" type="xs:boolean">
+                  </xs:attribute>
+                  <xs:attribute name="PAS_STRSPR" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="INV_INVALIDNOST">
+               <xs:complexType>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="VIN_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="INV_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="INV_DAT" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="INV_RAT" type="xs:boolean">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="IMU_IMUNIZACIJA">
+               <xs:complexType>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="VIM_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="IMU_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="IMU_DATUM" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="IMU_NAPO" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="POS_POSJETA">
+               <xs:complexType>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="POS_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="POS_DAT" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="POS_NAPO" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="KOR_KORISNIK">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="PAT_PACIJENT">
+                        <xs:complexType>
+                           <xs:sequence>
+                              <xs:element name="ZAP_ISTORIJA_ZAPOSLENJA">
+                                 <xs:complexType>
+                                    <xs:attribute name="PAT_IDENT" type="xs:int">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_IDENT" type="xs:int">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_NFIRME" type="xs:string">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_JIB" type="xs:decimal">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_ADRESA" type="xs:string">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_OPIS" type="xs:string">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZSJE" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZSTA" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZ_VID" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZNJUH" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZPRA" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_RIZHEM" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_DATOD" type="xs:date">
+                                    </xs:attribute>
+                                    <xs:attribute name="ZAP_DATDO" type="xs:date">
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                              <xs:element name="PAM_PACIJENT_MEDICINSKI_PODACI">
+                                 <xs:complexType>
+                                    <xs:attribute name="PAT_IDENT" type="xs:int">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_KRGR">
+                                       <xs:simpleType>
+                                         <xs:restriction base="xs:string">
+                                            <xs:enumeration value="A"/>
+                                            <xs:enumeration value="B"/>
+                                            <xs:enumeration value="AB"/>
+                                            <xs:enumeration value="0"/>
+                                         </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_RHF">
+                                       <xs:simpleType>
+                                         <xs:restriction base="xs:string">
+                                            <xs:enumeration value="+"/>
+                                            <xs:enumeration value="-"/>
+                                         </xs:restriction>
+                                       </xs:simpleType>
+                                    </xs:attribute>
+                                    <!--
+                                    Podrazumjevano false
+                                    -->
+                                    <xs:attribute name="PAM_DAORG" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_PUS" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_GOJ" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_POTH" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_ZLOUALKOH" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_DROG" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_HIPER" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_DIJAB" type="xs:boolean">
+                                    </xs:attribute>
+                                    <xs:attribute name="PAM_PRORG" type="xs:boolean">
+                                    </xs:attribute>
+                                 </xs:complexType>
+                              </xs:element>
+                           </xs:sequence>   
+                           <xs:attribute name="PAT_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="KOR_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <!--
+                           Jedinstveni matični broj građana. 13 cifara.
+                           -->
+                           <xs:attribute name="PAT_JMBG" type="xs:decimal">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_IME" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_PREZIME" type="xs:string">
+                           </xs:attribute>
+                           <!--
+                           Djevojačko prezime pacijenta. Nije obavezno polje.
+                           -->
+                           <xs:attribute name="PAT_DPREZIME" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_POL">
+                              <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                   <xs:enumeration value="Z"/>
+                                   <xs:enumeration value="M"/>
+                                   <xs:enumeration value="O"/>
+                                   <xs:enumeration value="N"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="PAT_RDATVRI" type="xs:dateTime">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_SDATVRI" type="xs:dateTime">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_ADRESA" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_TELEFONF" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_TELEFONM" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_EMAIL" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="PAT_AKTIVAN" type="xs:boolean">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                     <xs:element name="MER_MEDICINSKI_RADNIK">
+                        <xs:complexType>
+                           <xs:attribute name="MER_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="KOR_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <!--
+                           Ime pacijenta
+                           -->
+                           <xs:attribute name="MER_IME" type="xs:string">
+                           </xs:attribute>
+                           <!--
+                           Prezime pacijenta
+                           -->
+                           <xs:attribute name="MER_PREZ" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_DPREZ" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_JMBG" type="xs:decimal">
+                           </xs:attribute>
+                           <xs:attribute name="MER_POL">
+                              <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                   <xs:enumeration value="Z"/>
+                                   <xs:enumeration value="M"/>
+                                   <xs:enumeration value="O"/>
+                                   <xs:enumeration value="N"/>
+                                </xs:restriction>
+                              </xs:simpleType>
+                           </xs:attribute>
+                           <xs:attribute name="MER_DATR" type="xs:date">
+                           </xs:attribute>
+                           <xs:attribute name="MER_ADR" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_TELF" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_TELM" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_TELK" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_EMAIL" type="xs:string">
+                           </xs:attribute>
+                           <xs:attribute name="MER_NAPO" type="xs:string">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>   
+                  <xs:attribute name="KOR_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="KOR_AKTIVAN" type="xs:boolean">
+                  </xs:attribute>
+                  <xs:attribute name="KOR_KIME" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="KOR_LOZINKA" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="TER_TERMIN">
+               <xs:complexType>
+                  <xs:attribute name="TER_IDENT" type="xs:long">
+                  </xs:attribute>
+                  <xs:attribute name="URE_ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="URE_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="VOZ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="POS_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="SAL_ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="SAL_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="TER_DATUM" type="xs:date">
+                  </xs:attribute>
+                  <xs:attribute name="TER_POC" type="xs:time">
+                  </xs:attribute>
+                  <xs:attribute name="TER_KRAJ" type="xs:time">
+                  </xs:attribute>
+                  <xs:attribute name="TER_STATUS" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="TER_NAPO" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="DRZ_DRZAVA">
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="OPS_OPSTINA">
+                        <xs:complexType>
+                           <xs:attribute name="DRZ_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="OPS_IDENT" type="xs:int">
+                           </xs:attribute>
+                           <xs:attribute name="OPS_NAZIV" type="xs:string">
+                           </xs:attribute>
+                        </xs:complexType>
+                     </xs:element>
+                  </xs:sequence>   
+                  <xs:attribute name="DRZ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DRZ_KOD" type="xs:string">
+                  </xs:attribute>
+                  <xs:attribute name="DRZ_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="DIJ_MKB10_SIFARNIK_DIJAGNOZA">
+               <xs:complexType>
+                  <xs:attribute name="DIJ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DIJ_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="LIJ_ATCKLASIFIKACIJA_LIJEKOVA">
+               <xs:complexType>
+                  <xs:attribute name="LIJ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="LIJ_NAZIV" type="xs:string">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="MED_RAD_RADI_U_ORG">
+               <xs:complexType>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="KVAL_MEDG_RAD">
+               <xs:complexType>
+                  <xs:attribute name="KVA_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="LOKACIJA_ORGANIZACIJE">
+               <xs:complexType>
+                  <xs:attribute name="ORG_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="DRZ_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="USPOSTAVLJENE_DIJAGNOZE">
+               <xs:complexType>
+                  <xs:attribute name="DIJ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="POS_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+            <xs:element name="PREPISANI_LIJEKOVI">
+               <xs:complexType>
+                  <xs:attribute name="LIJ_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="PAT_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="MER_IDENT" type="xs:int">
+                  </xs:attribute>
+                  <xs:attribute name="POS_IDENT" type="xs:int">
+                  </xs:attribute>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>   
+      </xs:complexType>
+      <xs:key name="IDENTIFIER_2">
+         <xs:selector xpath="ETP_ETNICKA_PRIPADNOST"/>
+         <xs:field xpath="@ETP_IDENT"/>
+      </xs:key>
+      <xs:unique name="ETP_ETNICKA_PRIPADNOST_PK">
+         <xs:selector xpath="ETP_ETNICKA_PRIPADNOST"/>
+         <xs:field xpath="ETP_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_3">
+         <xs:selector xpath="KVA_KVALIFIKACIJE"/>
+         <xs:field xpath="@KVA_IDENT"/>
+      </xs:key>
+      <xs:unique name="KVA_KVALIFIKACIJE_PK">
+         <xs:selector xpath="KVA_KVALIFIKACIJE"/>
+         <xs:field xpath="KVA_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_4">
+         <xs:selector xpath="ORT_ORGANIZACIJA_TIP"/>
+         <xs:field xpath="@ORT_IDENT"/>
+      </xs:key>
+      <xs:unique name="ORT_ORGANIZACIJA_TIP_PK">
+         <xs:selector xpath="ORT_ORGANIZACIJA_TIP"/>
+         <xs:field xpath="ORT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_5">
+         <xs:selector xpath="VIN_VRSTA_INVALIDNOSTI"/>
+         <xs:field xpath="@VIN_IDENT"/>
+      </xs:key>
+      <xs:unique name="VIN_VRSTA_INVALIDNOSTI_PK">
+         <xs:selector xpath="VIN_VRSTA_INVALIDNOSTI"/>
+         <xs:field xpath="VIN_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_6">
+         <xs:selector xpath="VIM_VRSTA_IMUNIZACIJE"/>
+         <xs:field xpath="@VIM_IDENT"/>
+      </xs:key>
+      <xs:unique name="VIM_VRSTA_IMUNIZACIJE_PK">
+         <xs:selector xpath="VIM_VRSTA_IMUNIZACIJE"/>
+         <xs:field xpath="VIM_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="@ORG_IDENT"/>
+      </xs:key>
+      <xs:unique name="ORG_ORGANIZACIJA_PK">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PRIPADA_ORGANIZACIJI_FK">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_ORG_IDENT"/>
+      </xs:unique>
+      <xs:unique name="ORG_JE_TIPA_FK">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_8">
+         <xs:selector xpath="ORG_ORGANIZACIJA/SAL_SALA"/>
+         <xs:field xpath="@ORG_IDENT"/>
+         <xs:field xpath="@SAL_IDENT"/>
+      </xs:key>
+      <xs:unique name="SAL_SALA_PK">
+         <xs:selector xpath="SAL_SALA"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="SAL_IDENT"/>
+      </xs:unique>
+      <xs:unique name="SALA_PRIPADA_ORG_FK">
+         <xs:selector xpath="SAL_SALA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_9">
+         <xs:selector xpath="ORG_ORGANIZACIJA/VOZ_VOZILO"/>
+         <xs:field xpath="@ORG_IDENT"/>
+         <xs:field xpath="@VOZ_IDENT"/>
+      </xs:key>
+      <xs:unique name="VOZ_VOZILO_PK">
+         <xs:selector xpath="VOZ_VOZILO"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="VOZ_IDENT"/>
+      </xs:unique>
+      <xs:unique name="VOZILO_PRIPADA_ORG_FK">
+         <xs:selector xpath="VOZ_VOZILO"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_10">
+         <xs:selector xpath="URE_MEDICINSKI_UREDJAJ"/>
+         <xs:field xpath="@ORG_IDENT"/>
+         <xs:field xpath="@URE_IDENT"/>
+      </xs:key>
+      <xs:unique name="URE_MEDICINSKI_UREDJAJ_PK">
+         <xs:selector xpath="URE_MEDICINSKI_UREDJAJ"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="URE_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MED_UREDJ_U_ORG_FK">
+         <xs:selector xpath="URE_MEDICINSKI_UREDJAJ"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MED_UREDJ_JE_TIPA_FK">
+         <xs:selector xpath="URE_MEDICINSKI_UREDJAJ"/>
+         <xs:field xpath="URT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_11">
+         <xs:selector xpath="PAS_PACIJENT_SOCIJALNI_PODACI"/>
+         <xs:field xpath="@PAT_IDENT"/>
+      </xs:key>
+      <xs:unique name="PAS_PACIJENT_SOCIJALNI_PODACI_PK">
+         <xs:selector xpath="PAS_PACIJENT_SOCIJALNI_PODACI"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:unique name="ETNICKA_PRIPADNOST_PACIJENTA_FK">
+         <xs:selector xpath="PAS_PACIJENT_SOCIJALNI_PODACI"/>
+         <xs:field xpath="ETP_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KVALIFIKACIJE_PACIJENTA_FK">
+         <xs:selector xpath="PAS_PACIJENT_SOCIJALNI_PODACI"/>
+         <xs:field xpath="KVA_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_12">
+         <xs:selector xpath="INV_INVALIDNOST"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@VIN_IDENT"/>
+         <xs:field xpath="@INV_IDENT"/>
+      </xs:key>
+      <xs:unique name="INV_INVALIDNOST_PK">
+         <xs:selector xpath="INV_INVALIDNOST"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="VIN_IDENT"/>
+         <xs:field xpath="INV_IDENT"/>
+      </xs:unique>
+      <xs:unique name="INVALIDNOSTI_PACIJENTA_FK">
+         <xs:selector xpath="INV_INVALIDNOST"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:unique name="VRSTA_INVALIDNOSTI_FK">
+         <xs:selector xpath="INV_INVALIDNOST"/>
+         <xs:field xpath="VIN_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_13">
+         <xs:selector xpath="IMU_IMUNIZACIJA"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@VIM_IDENT"/>
+         <xs:field xpath="@IMU_IDENT"/>
+      </xs:key>
+      <xs:unique name="IMU_IMUNIZACIJA_PK">
+         <xs:selector xpath="IMU_IMUNIZACIJA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="VIM_IDENT"/>
+         <xs:field xpath="IMU_IDENT"/>
+      </xs:unique>
+      <xs:unique name="IMUNIZACIJE_PACIJENTA_FK">
+         <xs:selector xpath="IMU_IMUNIZACIJA"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:unique name="VRSTA_IMUNIZACIJE_FK">
+         <xs:selector xpath="IMU_IMUNIZACIJA"/>
+         <xs:field xpath="VIM_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_14">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@MER_IDENT"/>
+         <xs:field xpath="@POS_IDENT"/>
+      </xs:key>
+      <xs:unique name="POS_POSJETA_PK">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PREGLEDI_PACIJENTA_FK">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PREGLED_JE_OBAVIO_MEDICINSKI_RADNIK_FK">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PREGLED_JE_OBAVLJEN_U_USTANOVI_FK">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_15">
+         <xs:selector xpath="KOR_KORISNIK"/>
+         <xs:field xpath="@KOR_IDENT"/>
+      </xs:key>
+      <xs:unique name="KOR_KORISNIK_PK">
+         <xs:selector xpath="KOR_KORISNIK"/>
+         <xs:field xpath="KOR_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KORISNIK_MEDICINSKI_RADNIK_FK">
+         <xs:selector xpath="KOR_KORISNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KORISNIK_PACIJENT_FK">
+         <xs:selector xpath="KOR_KORISNIK"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_16">
+         <xs:selector xpath="KOR_KORISNIK/PAT_PACIJENT"/>
+         <xs:field xpath="@PAT_IDENT"/>
+      </xs:key>
+      <xs:unique name="PAT_PACIJENT_PK">
+         <xs:selector xpath="PAT_PACIJENT"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KORISNIK_PACIJENT2_FK">
+         <xs:selector xpath="PAT_PACIJENT"/>
+         <xs:field xpath="KOR_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_17">
+         <xs:selector xpath="KOR_KORISNIK/PAT_PACIJENT/ZAP_ISTORIJA_ZAPOSLENJA"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@ZAP_IDENT"/>
+      </xs:key>
+      <xs:unique name="ZAP_ISTORIJA_ZAPOSLENJA_PK">
+         <xs:selector xpath="ZAP_ISTORIJA_ZAPOSLENJA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="ZAP_IDENT"/>
+      </xs:unique>
+      <xs:unique name="ZAPOSLENJA_PACIJENTA_FK">
+         <xs:selector xpath="ZAP_ISTORIJA_ZAPOSLENJA"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_18">
+         <xs:selector xpath="KOR_KORISNIK/PAT_PACIJENT/PAM_PACIJENT_MEDICINSKI_PODACI"/>
+         <xs:field xpath="@PAT_IDENT"/>
+      </xs:key>
+      <xs:unique name="PAM_PACIJENT_MEDICINSKI_PODACI_PK">
+         <xs:selector xpath="PAM_PACIJENT_MEDICINSKI_PODACI"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_19">
+         <xs:selector xpath="KOR_KORISNIK/MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="@MER_IDENT"/>
+      </xs:key>
+      <xs:unique name="MER_MEDICINSKI_RADNIK_PK">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KORISNIK_MEDICINSKI_RADNIK2_FK">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="KOR_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_20">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="@TER_IDENT"/>
+      </xs:key>
+      <xs:unique name="TER_TERMIN_PK">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="TER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="SALA_JE_REZERVISANA_ZA_TERMIN_FK">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="SAL_ORG_IDENT"/>
+         <xs:field xpath="SAL_IDENT"/>
+      </xs:unique>
+      <xs:unique name="VOZILO_JE_REZERVISANO_NA_TERMIN_FK">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="VOZ_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MEDIICINSKI_UREDAJ_JE_REZERVISAN_ZA_TERMIN_FK">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="URE_ORG_IDENT"/>
+         <xs:field xpath="URE_IDENT"/>
+      </xs:unique>
+      <xs:unique name="POSJETI_SU_PRIDRUZENI_TERMINI_FK">
+         <xs:selector xpath="TER_TERMIN"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_21">
+         <xs:selector xpath="DRZ_DRZAVA"/>
+         <xs:field xpath="@DRZ_IDENT"/>
+      </xs:key>
+      <xs:unique name="DRZ_DRZAVA_PK">
+         <xs:selector xpath="DRZ_DRZAVA"/>
+         <xs:field xpath="DRZ_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_22">
+         <xs:selector xpath="DRZ_DRZAVA/OPS_OPSTINA"/>
+         <xs:field xpath="@DRZ_IDENT"/>
+         <xs:field xpath="@OPS_IDENT"/>
+      </xs:key>
+      <xs:unique name="OPS_OPSTINA_PK">
+         <xs:selector xpath="OPS_OPSTINA"/>
+         <xs:field xpath="DRZ_IDENT"/>
+         <xs:field xpath="OPS_IDENT"/>
+      </xs:unique>
+      <xs:unique name="LOKALNA_SAMOUPRAVA2_FK">
+         <xs:selector xpath="OPS_OPSTINA"/>
+         <xs:field xpath="DRZ_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_23">
+         <xs:selector xpath="DIJ_MKB10_SIFARNIK_DIJAGNOZA"/>
+         <xs:field xpath="@DIJ_IDENT"/>
+      </xs:key>
+      <xs:unique name="DIJ_MKB10_SIFARNIK_DIJAGNOZA_PK">
+         <xs:selector xpath="DIJ_MKB10_SIFARNIK_DIJAGNOZA"/>
+         <xs:field xpath="DIJ_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_24">
+         <xs:selector xpath="LIJ_ATCKLASIFIKACIJA_LIJEKOVA"/>
+         <xs:field xpath="@LIJ_IDENT"/>
+      </xs:key>
+      <xs:unique name="LIJ_ATCKLASIFIKACIJA_LIJEKOVA_PK">
+         <xs:selector xpath="LIJ_ATCKLASIFIKACIJA_LIJEKOVA"/>
+         <xs:field xpath="LIJ_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_25">
+         <xs:selector xpath="MED_RAD_RADI_U_ORG"/>
+         <xs:field xpath="@MER_IDENT"/>
+         <xs:field xpath="@ORG_IDENT"/>
+      </xs:key>
+      <xs:unique name="MED_RAD_RADI_U_ORG_PK">
+         <xs:selector xpath="MED_RAD_RADI_U_ORG"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MED_RAD_RADI_U_ORG_FK">
+         <xs:selector xpath="MED_RAD_RADI_U_ORG"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="MED_RAD_RADI_U_ORG2_FK">
+         <xs:selector xpath="MED_RAD_RADI_U_ORG"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_26">
+         <xs:selector xpath="KVAL_MEDG_RAD"/>
+         <xs:field xpath="@KVA_IDENT"/>
+         <xs:field xpath="@MER_IDENT"/>
+      </xs:key>
+      <xs:unique name="KVAL_MEDG_RAD_PK">
+         <xs:selector xpath="KVAL_MEDG_RAD"/>
+         <xs:field xpath="KVA_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KVAL_MEDG_RAD_FK">
+         <xs:selector xpath="KVAL_MEDG_RAD"/>
+         <xs:field xpath="KVA_IDENT"/>
+      </xs:unique>
+      <xs:unique name="KVAL_MEDG_RAD2_FK">
+         <xs:selector xpath="KVAL_MEDG_RAD"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_27">
+         <xs:selector xpath="LOKACIJA_ORGANIZACIJE"/>
+         <xs:field xpath="@ORG_IDENT"/>
+         <xs:field xpath="@DRZ_IDENT"/>
+      </xs:key>
+      <xs:unique name="LOKACIJA_ORGANIZACIJE_PK">
+         <xs:selector xpath="LOKACIJA_ORGANIZACIJE"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="DRZ_IDENT"/>
+      </xs:unique>
+      <xs:unique name="LOKACIJA_ORGANIZACIJE_FK">
+         <xs:selector xpath="LOKACIJA_ORGANIZACIJE"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:unique>
+      <xs:unique name="LOKACIJA_ORGANIZACIJE2_FK">
+         <xs:selector xpath="LOKACIJA_ORGANIZACIJE"/>
+         <xs:field xpath="DRZ_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_28">
+         <xs:selector xpath="USPOSTAVLJENE_DIJAGNOZE"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@MER_IDENT"/>
+         <xs:field xpath="@DIJ_IDENT"/>
+         <xs:field xpath="@POS_IDENT"/>
+      </xs:key>
+      <xs:unique name="USPOSTAVLJENE_DIJAGNOZE_PK">
+         <xs:selector xpath="USPOSTAVLJENE_DIJAGNOZE"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="DIJ_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:unique name="USPOSTAVLJENE_DIJAGNOZE_FK">
+         <xs:selector xpath="USPOSTAVLJENE_DIJAGNOZE"/>
+         <xs:field xpath="DIJ_IDENT"/>
+      </xs:unique>
+      <xs:unique name="USPOSTAVLJENE_DIJAGNOZE2_FK">
+         <xs:selector xpath="USPOSTAVLJENE_DIJAGNOZE"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:key name="IDENTIFIER_1">
+         <xs:selector xpath="PREPISANI_LIJEKOVI"/>
+         <xs:field xpath="@PAT_IDENT"/>
+         <xs:field xpath="@MER_IDENT"/>
+         <xs:field xpath="@LIJ_IDENT"/>
+         <xs:field xpath="@POS_IDENT"/>
+      </xs:key>
+      <xs:unique name="PREPISANI_LIJEKOVI_PK">
+         <xs:selector xpath="PREPISANI_LIJEKOVI"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="LIJ_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PREPISANI_LIJEKOVI_FK">
+         <xs:selector xpath="PREPISANI_LIJEKOVI"/>
+         <xs:field xpath="LIJ_IDENT"/>
+      </xs:unique>
+      <xs:unique name="PREPISANI_LIJEKOVI2_FK">
+         <xs:selector xpath="PREPISANI_LIJEKOVI"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:unique>
+      <xs:keyref name="MED_RAD_RADI_U_ORG" refer="IDENTIFIER_19">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="MED_RAD_RADI_U_ORG2" refer="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="MED_UREDJ_U_ORG" refer="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PRIPADA_ORGANIZACIJI" refer="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_ORG_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="SOCIJALNI_PODACI_PACIJENTA" refer="IDENTIFIER_16">
+         <xs:selector xpath="PAT_PACIJENT"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="ETNICKA_PRIPADNOST_PACIJENTA" refer="IDENTIFIER_2">
+         <xs:selector xpath="ETP_ETNICKA_PRIPADNOST"/>
+         <xs:field xpath="ETP_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="KVAL_MEDG_RAD" refer="IDENTIFIER_3">
+         <xs:selector xpath="KVA_KVALIFIKACIJE"/>
+         <xs:field xpath="KVA_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="KVAL_MEDG_RAD2" refer="IDENTIFIER_19">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="KVALIFIKACIJE_PACIJENTA" refer="IDENTIFIER_3">
+         <xs:selector xpath="KVA_KVALIFIKACIJE"/>
+         <xs:field xpath="KVA_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="MED_UREDJ_JE_TIPA">
+         <xs:selector xpath="URT_TIP_MEDICINSKOG_UREDJAJA"/>
+         <xs:field xpath="URT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="ORG_JE_TIPA" refer="IDENTIFIER_4">
+         <xs:selector xpath="ORT_ORGANIZACIJA_TIP"/>
+         <xs:field xpath="ORT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="INVALIDNOSTI_PACIJENTA" refer="IDENTIFIER_18">
+         <xs:selector xpath="PAM_PACIJENT_MEDICINSKI_PODACI"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="VRSTA_INVALIDNOSTI" refer="IDENTIFIER_5">
+         <xs:selector xpath="VIN_VRSTA_INVALIDNOSTI"/>
+         <xs:field xpath="VIN_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="IMUNIZACIJE_PACIJENTA" refer="IDENTIFIER_18">
+         <xs:selector xpath="PAM_PACIJENT_MEDICINSKI_PODACI"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="VRSTA_IMUNIZACIJE" refer="IDENTIFIER_6">
+         <xs:selector xpath="VIM_VRSTA_IMUNIZACIJE"/>
+         <xs:field xpath="VIM_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PREGLEDI_PACIJENTA" refer="IDENTIFIER_18">
+         <xs:selector xpath="PAM_PACIJENT_MEDICINSKI_PODACI"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PREGLED_JE_OBAVIO_MEDICINSKI_RADNIK" refer="IDENTIFIER_19">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PREGLED_JE_OBAVLJEN_U_USTANOVI" refer="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="KORISNIK_MEDICINSKI_RADNIK" refer="IDENTIFIER_19">
+         <xs:selector xpath="MER_MEDICINSKI_RADNIK"/>
+         <xs:field xpath="MER_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="KORISNIK_PACIJENT" refer="IDENTIFIER_16">
+         <xs:selector xpath="PAT_PACIJENT"/>
+         <xs:field xpath="PAT_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="SALA_JE_REZERVISANA_ZA_TERMIN" refer="IDENTIFIER_8">
+         <xs:selector xpath="SAL_SALA"/>
+         <xs:field xpath="SAL_ORG_IDENT"/>
+         <xs:field xpath="SAL_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="VOZILO_JE_REZERVISANO_NA_TERMIN" refer="IDENTIFIER_9">
+         <xs:selector xpath="VOZ_VOZILO"/>
+         <xs:field xpath="ORG_IDENT"/>
+         <xs:field xpath="VOZ_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="MEDIICINSKI_UREDAJ_JE_REZERVISAN_ZA_TERMIN" refer="IDENTIFIER_10">
+         <xs:selector xpath="URE_MEDICINSKI_UREDJAJ"/>
+         <xs:field xpath="URE_ORG_IDENT"/>
+         <xs:field xpath="URE_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="POSJETI_SU_PRIDRUZENI_TERMINI" refer="IDENTIFIER_14">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="LOKACIJA_ORGANIZACIJE" refer="IDENTIFIER_7">
+         <xs:selector xpath="ORG_ORGANIZACIJA"/>
+         <xs:field xpath="ORG_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="LOKACIJA_ORGANIZACIJE2" refer="IDENTIFIER_21">
+         <xs:selector xpath="DRZ_DRZAVA"/>
+         <xs:field xpath="DRZ_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="USPOSTAVLJENE_DIJAGNOZE" refer="IDENTIFIER_23">
+         <xs:selector xpath="DIJ_MKB10_SIFARNIK_DIJAGNOZA"/>
+         <xs:field xpath="DIJ_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="USPOSTAVLJENE_DIJAGNOZE2" refer="IDENTIFIER_14">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PREPISANI_LIJEKOVI" refer="IDENTIFIER_24">
+         <xs:selector xpath="LIJ_ATCKLASIFIKACIJA_LIJEKOVA"/>
+         <xs:field xpath="LIJ_IDENT"/>
+      </xs:keyref>
+      <xs:keyref name="PREPISANI_LIJEKOVI2" refer="IDENTIFIER_14">
+         <xs:selector xpath="POS_POSJETA"/>
+         <xs:field xpath="PAT_IDENT"/>
+         <xs:field xpath="MER_IDENT"/>
+         <xs:field xpath="POS_IDENT"/>
+      </xs:keyref>
+   </xs:element>
+</xs:schema>

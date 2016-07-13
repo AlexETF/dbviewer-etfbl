@@ -421,6 +421,8 @@ public class DBViewerController implements Initializable, DisplayMetaModelData {
             lblStatus.setText("Meta model element not selected");
             return;
         }
+        
+        reportManager.generateHierarchialReport();
     }
 
     private void generateParentChildReport() {
