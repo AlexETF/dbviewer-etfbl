@@ -30,6 +30,9 @@ import net.sf.dynamicreports.report.builder.datatype.DataTypes;
 import net.sf.dynamicreports.report.builder.style.StyleBuilder;
 import net.sf.dynamicreports.report.constant.HorizontalAlignment;
 import net.sf.dynamicreports.report.constant.VerticalAlignment;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.data.JRMapArrayDataSource;
 
 /**
  *
@@ -129,6 +132,8 @@ public class DynamicReportManager implements ReportManager {
             
             report.setDataSource(query, connection);
             report.show(false);
+            
+            
 
         } catch (Exception ex) {
             ex.printStackTrace();
