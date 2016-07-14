@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.etfbl.dbviewer.database.IDatabaseManager;
+import net.etfbl.dbviewer.database.mysql.dao.HijerarhijaTabelaDAO;
 import net.etfbl.dbviewer.database.mysql.dao.TabeleDAO;
+import net.etfbl.dbviewer.database.mysql.dto.HijerarhijaTabelaDTO;
 import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
@@ -77,5 +79,18 @@ public class MySQLDatabaseManager implements IDatabaseManager {
     public String generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes) {
         
         return null;
+    }
+    
+    public List<HijerarhijaTabelaDTO> generateHierarcicalReportList(HijerarhijaTabelaDTO element){
+        List<HijerarhijaTabelaDTO> list = new ArrayList<>();
+        reqursionHierarchical(list, element);
+        return list;
+    }
+    
+    public void reqursionHierarchical(List<HijerarhijaTabelaDTO> list, HijerarhijaTabelaDTO hElement){
+        list.add(hElement);
+        System.out.println("hijjjj:" + hElement.toString());
+        for(HijerarhijaTabelaDTO element : HijerarhijaTabelaDAO.getChildren(hElement))
+            reqursionHierarchical(list, element);
     }
 }

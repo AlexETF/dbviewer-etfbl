@@ -12,6 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import net.etfbl.dbviewer.database.ConnectionPool;
 import net.etfbl.dbviewer.database.IDatabaseManager;
+import net.etfbl.dbviewer.database.mysql.dao.HijerarhijaTabelaDAO;
+import net.etfbl.dbviewer.database.mysql.dao.PoljaDAO;
+import net.etfbl.dbviewer.database.mysql.dao.TabeleDAO;
+import net.etfbl.dbviewer.database.mysql.dto.HijerarhijaTabelaDTO;
+import net.etfbl.dbviewer.database.mysql.dto.PoljeDTO;
+import net.etfbl.dbviewer.database.mysql.dto.TabelaDTO;
 import net.etfbl.dbviewer.ireports.ReportManager;
 import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
@@ -114,8 +120,8 @@ public class DynamicReportManager implements ReportManager {
         String query = databaseManager.generateHierarchialReport(element, columns);
         Connection connection = null;
         try {
-            if(query == null){
-                throw new IllegalArgumentException("Query is null");
+            if(treeList == null){
+                throw new IllegalArgumentException("List is null");
             }
             connection = ConnectionPool.getConnectionPool().checkOut();
             JasperReportBuilder report = DynamicReports.report();
@@ -129,6 +135,36 @@ public class DynamicReportManager implements ReportManager {
         } finally {
             ConnectionPool.getConnectionPool().checkIn(connection);
         }
+        
+        
+    }
+    
+   
+     private MetaModelSchemaElement convertToMetaElement(HijerarhijaTabelaDTO hdto) {
+        MetaModelSchemaElement element = new MetaModelSchemaElement();
+        TabelaDTO table = TabeleDAO.getTable(hdto.getSecTable());
+        List<PoljeDTO> fields = PoljaDAO.getAllForTable(table.getCode());
+        table.setColumns(fields);
+        element.setName(table.getLabel());
+        element.setCode(table.getCode());
+        for (PoljeDTO field : fields) {
+            MetaModelSchemaAttribute attribute = new MetaModelSchemaAttribute();
+            attribute.setName(field.getPoljeLabela());
+            attribute.setCode(field.getPoljeKod());
+            element.getAttributes().add(attribute);
+        }
+        return element;
     }
 
+    private MetaModelSchemaElement constructRootElement(HijerarhijaTabelaDTO hdto) {
+        MetaModelSchemaElement root = convertToMetaElement(hdto);
+        List<HijerarhijaTabelaDTO> children = HijerarhijaTabelaDAO.getForTableAtLevel(hdto.getSecTable(), hdto.getTreeLevel() + 1);
+        for (HijerarhijaTabelaDTO child : children) {
+            MetaModelSchemaElement element = constructRootElement(child);
+            element.setParent(root);
+            root.getChildren().add(element);
+        }
+        return root;
+    }
+    
 }

@@ -66,4 +66,9 @@ public class HijerarhijaTabelaDTO {
     public void setChildPos(int childPos) {
         this.childPos = childPos;
     }
+    
+    @Override
+    public String toString(){
+        return tabela + ";" + secTable + ";" + treeLevel + ";" + parentPos + ";" + childPos;
+    }
 }

@@ -154,4 +154,53 @@ public class HijerarhijaTabelaDAO {
         }
         return hijerarhija;
     }
+    
+    public static HijerarhijaTabelaDTO getElementByName(String elementName){
+        HijerarhijaTabelaDTO hElement = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = ConnectionPool.getConnectionPool().checkOut();
+            stmt = conn.prepareStatement(SQL_SELECT_ELEMENT_BY_NAME);
+            stmt.setString(1, elementName);
+           
+            ResultSet results = stmt.executeQuery();
+            if(results.next()){
+                hElement = new HijerarhijaTabelaDTO(results.getString("TAB_TBL_KOD"), results.getString("TBL_KOD"), results.getInt("HIJ_NIVOST"), results.getInt("HIJ_PARPOZ"), results.getInt("HIJ_CHRBR"));
+            }
+            
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace(System.err); // LOG
+        } finally {
+            ConnectionPool.getConnectionPool().checkIn(conn);
+        }
+        return hElement;
+    }
+    
+    public static List<HijerarhijaTabelaDTO> getChildren(HijerarhijaTabelaDTO hElement){
+        List<HijerarhijaTabelaDTO> listChildren = null;
+        Connection conn = null;
+        PreparedStatement stmt;
+        try {
+            listChildren = new ArrayList<>();
+            conn = ConnectionPool.getConnectionPool().checkOut();
+            stmt = conn.prepareStatement(SQL_SELECT_CHILDREN);
+            stmt.setString(1, hElement.getSecTable());
+            stmt.setInt(2, hElement.getTreeLevel() + 1);
+            stmt.setInt(3, hElement.getChildPos());
+            
+            ResultSet results = stmt.executeQuery();
+            listChildren.addAll(getFromResultSet(results));
+            stmt.close();
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace(System.err); // LOG
+        } finally {
+            ConnectionPool.getConnectionPool().checkIn(conn);
+        }
+        return listChildren;
+    }
+    
 }

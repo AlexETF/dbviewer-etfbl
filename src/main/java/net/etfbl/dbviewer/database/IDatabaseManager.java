@@ -6,6 +6,7 @@
 package net.etfbl.dbviewer.database;
 
 import java.util.List;
+import net.etfbl.dbviewer.database.mysql.dto.HijerarhijaTabelaDTO;
 import net.etfbl.dbviewer.model.MetaModelSchemaAttribute;
 import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 
