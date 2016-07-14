@@ -104,7 +104,7 @@ public class DynamicReportManager implements ReportManager {
             
             for (int i = 0; i < columns.size(); i++) {
                 TextColumnBuilder<String> column
-                        = Columns.column("Child " + columns.get(i).getName(), columns.get(i).getCode(), DataTypes.stringType());
+                        = Columns.column(columns.get(i).getName(), columns.get(i).getCode(), DataTypes.stringType());
                 column.setStyle(ColumnStyles[i % ColumnStyles.length]);
                 
                 report.addColumn(column);
@@ -119,8 +119,30 @@ public class DynamicReportManager implements ReportManager {
         }
     }
 
-    public void generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns) {
-        String query = databaseManager.generateHierarchialReport(element, columns);
+    //public void generateHierarchialReport(MetaModelSchemaElement element) {
+    public void generateHierarchialReport() {
+        int minimumLevel = HijerarhijaTabelaDAO.getMinTreeLevel();
+        int maximumLevel = HijerarhijaTabelaDAO.getMaxTreeLevel();
+        if (minimumLevel == -1 || maximumLevel == -1 || minimumLevel > maximumLevel) {
+            //displayStatusMessage("Error: Minimum or maximum level not correct");
+            System.out.println("Error: Minimum or maximum level not correct");
+            return;
+        }
+        List<HijerarhijaTabelaDTO> root = HijerarhijaTabelaDAO.getAllAtLevel(minimumLevel);
+        if (root.size() > 1) {
+            //displayStatusMessage("Error: There are more than 1 root element");
+            System.out.println("Error: There are more than 1 root element");
+            return;
+        }
+        //MetaModelSchemaElement rootElement = constructRootElement(root.get(0));
+        
+        //List<HijerarhijaTabelaDTO> listOfAllElements = HijerarhijaTabelaDAO.getAll();
+        HijerarhijaTabelaDTO parent = root.get(0);
+        List<HijerarhijaTabelaDTO> treeList = databaseManager.generateHierarcicalReportList(parent);
+//        for(HijerarhijaTabelaDTO el : treeList)
+//            System.out.println("te:" + el.toString());
+        
+        
         Connection connection = null;
         try {
             if(treeList == null){
@@ -129,8 +151,14 @@ public class DynamicReportManager implements ReportManager {
             connection = ConnectionPool.getConnectionPool().checkOut();
             JasperReportBuilder report = DynamicReports.report();
             
-            
-            report.setDataSource(query, connection);
+            report.addColumn(Columns.column("HIJ_NIVOST", DataTypes.stringType()));
+            report.addColumn(Columns.column("HIJ_PARPOZ", DataTypes.stringType()));
+            report.addColumn(Columns.column("TAB_TBL_KOD", DataTypes.stringType()));
+            report.addColumn(Columns.column("HIJ_CHRBR", DataTypes.stringType()));
+            report.addColumn(Columns.column("TBL_KOD", DataTypes.stringType()));
+
+            ReportSourceFromList rsflSource = new ReportSourceFromList(treeList);
+            report.setDataSource(rsflSource);
             report.show(false);
             
             

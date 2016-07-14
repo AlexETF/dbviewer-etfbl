@@ -15,7 +15,17 @@ public class HijerarhijaTabelaDAO {
 
     static final String SQL_ADD_ENTRY = "INSERT INTO hijerarhija_tabela (TAB_TBL_KOD, TBL_KOD, HIJ_NIVOST, HIJ_PARPOZ, HIJ_CHRBR) VALUES (?,?,?,?,?)";
     static final String SQL_SELECT_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ?";
-    static final String SQL_SELECT_FOR_TABLE_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ? AND TAB_TBL_KOD = ? ORDER BY HIJ_CHRBR ASC";
+    static final String SQL_SELECT_FOR_TABLE_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ? AND TAB_TBL_KOD = ?";
+    static final String SQL_SELECT_ELEMENT_BY_NAME = "SELECT * FROM hijerarhija_tabela where TBL_KOD = ?";
+    static final String SQL_SELECT_CHILDREN =  
+              " select HIJ_NIVOST, HIJ_PARPOZ, ht.TAB_TBL_KOD as 'TAB_TBL_KOD', HIJ_CHRBR, ht.TBL_KOD as 'TBL_KOD'"
+            + "	from tabele tp" 
+            + "	join hijerarhija_tabela ht on tp.TBL_KOD = ht.TAB_TBL_KOD" 
+            + "	join tabele tc on ht.TBL_KOD = tc.TBL_KOD" 
+            + "	where ht.TAB_TBL_KOD = ? " 
+            + "	and ht.HIJ_NIVOST = ? \n" 
+            + " and ht.HIJ_PARPOZ = ? \n" 
+            + " order by HIJ_CHRBR";
     
     static final String SQL_SELECT_ALL = "SELECT * FROM hijerarhija_tabela";
     static final String SQL_GET_MIN_LEVEL = "SELECT min(HIJ_NIVOST) FROM hijerarhija_tabela";
