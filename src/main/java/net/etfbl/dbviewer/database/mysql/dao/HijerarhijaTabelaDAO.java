@@ -182,6 +182,7 @@ public class HijerarhijaTabelaDAO {
         List<HijerarhijaTabelaDTO> listChildren = null;
         Connection conn = null;
         PreparedStatement stmt;
+        ResultSet results = null;
         try {
             listChildren = new ArrayList<>();
             conn = ConnectionPool.getConnectionPool().checkOut();
@@ -190,7 +191,7 @@ public class HijerarhijaTabelaDAO {
             stmt.setInt(2, hElement.getTreeLevel() + 1);
             stmt.setInt(3, hElement.getChildPos());
             
-            ResultSet results = stmt.executeQuery();
+            results = stmt.executeQuery();
             listChildren.addAll(getFromResultSet(results));
             stmt.close();
             

@@ -89,7 +89,6 @@ public class MySQLDatabaseManager implements IDatabaseManager {
     
     public void reqursionHierarchical(List<HijerarhijaTabelaDTO> list, HijerarhijaTabelaDTO hElement){
         list.add(hElement);
-        System.out.println("hijjjj:" + hElement.toString());
         for(HijerarhijaTabelaDTO element : HijerarhijaTabelaDAO.getChildren(hElement))
             reqursionHierarchical(list, element);
     }
