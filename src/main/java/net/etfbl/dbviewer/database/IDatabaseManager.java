@@ -17,5 +17,5 @@ public interface IDatabaseManager {
     
     String generateTableQuery(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes);
     String generateParentChildReportQuery(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes, List<MetaModelSchemaAttribute> parentAttributes);
-    
+    String generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes);
 }

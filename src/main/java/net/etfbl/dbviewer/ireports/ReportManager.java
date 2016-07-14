@@ -16,5 +16,5 @@ import net.etfbl.dbviewer.model.MetaModelSchemaElement;
 public interface ReportManager {
     void generateTableReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns);
     void generateParentChildReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns,  List<MetaModelSchemaAttribute> parentColumns);
-    void generateHierarchialReport(MetaModelSchemaElement element);
+    void generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns);
 }

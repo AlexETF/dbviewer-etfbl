@@ -73,4 +73,9 @@ public class MySQLDatabaseManager implements IDatabaseManager {
         }
         return null;
     }
+    
+    public String generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> attributes) {
+        
+        return null;
+    }
 }

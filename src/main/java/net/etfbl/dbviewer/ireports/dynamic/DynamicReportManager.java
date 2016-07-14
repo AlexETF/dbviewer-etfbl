@@ -95,7 +95,7 @@ public class DynamicReportManager implements ReportManager {
             
             for (int i = 0; i < columns.size(); i++) {
                 TextColumnBuilder<String> column
-                        = Columns.column(columns.get(i).getName(), columns.get(i).getCode(), DataTypes.stringType());
+                        = Columns.column("Child " + columns.get(i).getName(), columns.get(i).getCode(), DataTypes.stringType());
                 column.setStyle(ColumnStyles[i % ColumnStyles.length]);
                 
                 report.addColumn(column);
@@ -110,8 +110,25 @@ public class DynamicReportManager implements ReportManager {
         }
     }
 
-    public void generateHierarchialReport(MetaModelSchemaElement element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void generateHierarchialReport(MetaModelSchemaElement element, List<MetaModelSchemaAttribute> columns) {
+        String query = databaseManager.generateHierarchialReport(element, columns);
+        Connection connection = null;
+        try {
+            if(query == null){
+                throw new IllegalArgumentException("Query is null");
+            }
+            connection = ConnectionPool.getConnectionPool().checkOut();
+            JasperReportBuilder report = DynamicReports.report();
+            
+            
+            report.setDataSource(query, connection);
+            report.show(false);
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            ConnectionPool.getConnectionPool().checkIn(connection);
+        }
     }
 
 }

@@ -15,7 +15,7 @@ public class HijerarhijaTabelaDAO {
 
     static final String SQL_ADD_ENTRY = "INSERT INTO hijerarhija_tabela (TAB_TBL_KOD, TBL_KOD, HIJ_NIVOST, HIJ_PARPOZ, HIJ_CHRBR) VALUES (?,?,?,?,?)";
     static final String SQL_SELECT_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ?";
-    static final String SQL_SELECT_FOR_TABLE_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ? AND TAB_TBL_KOD = ?";
+    static final String SQL_SELECT_FOR_TABLE_AT_LEVEL = "SELECT * FROM hijerarhija_tabela WHERE HIJ_NIVOST = ? AND TAB_TBL_KOD = ? ORDER BY HIJ_CHRBR ASC";
     
     static final String SQL_SELECT_ALL = "SELECT * FROM hijerarhija_tabela";
     static final String SQL_GET_MIN_LEVEL = "SELECT min(HIJ_NIVOST) FROM hijerarhija_tabela";
